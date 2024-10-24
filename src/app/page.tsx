@@ -6,7 +6,6 @@ import { isMobile } from '../utils/deviceDetection'
 
 export default function Home() {
   const router = useRouter()
-  console.log(isMobile())
 
   useEffect(() => {
     if (isMobile()) {

@@ -6,14 +6,31 @@ export const Container = styled.div`
   padding: 0 20px;
 `
 
-export const Button = styled.button<{ primary?: boolean }>`
-  background-color: ${(props) => (props.primary ? '#007bff' : '#6c757d')};
-  color: white;
+export const Button = styled.button`
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 36px;
   padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+  font-family: var(--font-geist-sans);
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `
+
+// export const Button = styled.button<{ primary?: boolean }>`
+//   background-color: ${(props) => (props.primary ? '#007bff' : '#6c757d')};
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+// `
 
 export const Title = styled.h1`
   font-size: 2rem;
