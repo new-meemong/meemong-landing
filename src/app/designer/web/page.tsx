@@ -4,11 +4,11 @@ import { Button } from '@/styles/CommonStyles'
 import Image from 'next/image'
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import FavoriteModel from '@/components/FavoriteModelSection'
 import FavoriteModelSection from '@/components/FavoriteModelSection'
 import ReviewSection from '@/components/ReviewSection'
 import PlanSection from '@/components/PlanSection'
 import FooterSection from '@/components/common/FooterSection'
+import CountDataSection from '@/components/CountDataSection'
 
 export default function DesignerWeb() {
   const [activeSection, setActiveSection] = useState('헤어모델 매칭')
@@ -99,27 +99,7 @@ export default function DesignerWeb() {
       </MainCover>
 
       {/* 데이터 영역 */}
-      <DataSection>
-        <Date>2024. 02. 24 14:00:13</Date>
-        <DataContainer>
-          <DataItem>
-            <DataKey>헤어모델</DataKey>
-            <DataValue>1,000 명</DataValue>
-          </DataItem>
-          <DataItem>
-            <DataKey>헤어디자이너</DataKey>
-            <DataValue>1,000 명</DataValue>
-          </DataItem>
-          <DataItem>
-            <DataKey>누적 초상권 계약수</DataKey>
-            <DataValue>1,000 건</DataValue>
-          </DataItem>
-          <DataItem>
-            <DataKey>회원수</DataKey>
-            <DataValue>1,000 명</DataValue>
-          </DataItem>
-        </DataContainer>
-      </DataSection>
+      <CountDataSection />
 
       {/* 네비게이션바 */}
       <Navigation>
@@ -248,7 +228,7 @@ export default function DesignerWeb() {
               <CommonContent
                 title1="구인구직은 미몽으로"
                 title2="내가 원하는 매장만 즉시 찾기"
-                description1="미용인의 눈높에이 맞춘 상세한 필터 덕분에"
+                description1="미용인의 눈높이에 맞춘 상세한 필터 덕분에"
                 description2="원하는 매장을 즉시 찾을 수 있어요!"
                 images={['/assets/images/recruit/recruit3.png', '/assets/images/recruit/recruit4.png']}
                 title2Color="#8276F5"
@@ -276,7 +256,7 @@ export default function DesignerWeb() {
             <ContentSection>
               <CommonContent
                 title1="스페어 구인공고도 미몽으로"
-                title2="잠깐 필요한 스페어구도 바로"
+                title2="잠깐 필요한 스페어구인도 바로"
                 description1="성수기에 피룡한 스페어 구인"
                 description2="바로 올리고 바로 구하세요!"
                 images={['/assets/images/spare/spare1.png', '/assets/images/spare/spare2.png']}
@@ -308,7 +288,7 @@ export default function DesignerWeb() {
           '/assets/images/review/review3.png',
           '/assets/images/review/review4.png'
         ]}
-        names={['조** 모델', '김** 모델', '이** 모델', '박** 모델']}
+        names={['조** 모델', '김** 모델', '이** ', '박** 모델']}
       />
 
       {/* 리뷰 섹션 */}
@@ -397,15 +377,6 @@ const ButtonGroup = styled.div`
   gap: 1rem;
 `
 
-const AppStoreButton = styled.button`
-  padding: 0.5rem 1rem;
-  background-color: #000;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`
-
 const ModelPageButton = styled(Button)`
   background-color: white;
   color: black;
@@ -423,42 +394,6 @@ const LinkButton = styled.a`
   &:hover {
     transform: scale(1.05);
   }
-`
-
-const DataSection = styled.section`
-  /* background-color: #fff; */
-  padding: 50px 20%;
-`
-
-const Date = styled.time`
-  color: rgba(0, 0, 0, 0.3);
-  font-size: clamp(14px, 1.5vw, 23px);
-`
-
-const DataContainer = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  /* gap: 20px; */
-  flex-wrap: wrap;
-`
-
-const DataItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const DataKey = styled.span`
-  font-weight: bold;
-  font-size: clamp(20px, 2.08vw, 40px);
-  margin-bottom: 20px;
-  color: #000;
-`
-
-const DataValue = styled.span`
-  font-size: clamp(20px, 1.67vw, 32px);
-  color: #000;
 `
 
 const Navigation = styled.nav`
@@ -558,7 +493,7 @@ const FeatureList = styled.div`
     bottom: 28px; // 마지막 이콘 중앙까지
     width: 1px;
     height: 300px;
-    background-image: url('/assets/images/hair-model/vertical-line.svg');
+    background-image: url('/assets/images/hairmodel/parts/vertical-line.svg');
   }
 `
 

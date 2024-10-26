@@ -18,21 +18,12 @@ export const Button = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1.2;
   gap: 5px;
-  line-height: 1;
   &:hover {
     background-color: #f0f0f0;
   }
 `
-
-// export const Button = styled.button<{ primary?: boolean }>`
-//   background-color: ${(props) => (props.primary ? '#007bff' : '#6c757d')};
-//   color: white;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-// `
 
 export const Title = styled.h1`
   font-size: 2rem;

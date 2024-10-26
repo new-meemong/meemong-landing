@@ -19,7 +19,7 @@ export default function DesignerMobile() {
   return (
     <MobileLayout>
       <DesignerMobileTitle>디자이너 모바일 앱</DesignerMobileTitle>
-      <DesignerMobileButton primary>시작하기</DesignerMobileButton>
+      <DesignerMobileButton>시작하기</DesignerMobileButton>
     </MobileLayout>
   )
 }

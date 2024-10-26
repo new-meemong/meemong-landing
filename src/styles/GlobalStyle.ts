@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
 
   /* 기본 폰트 설정 */
   html, body {
-    font-family: var(--font-geist-sans);
+    /* font-family: var(--font-geist-sans); */
+    font-family: var(--font-pretandard) !important;
     font-size: 16px;
     line-height: 1.5;
     color: #333;
