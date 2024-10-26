@@ -1,4 +1,5 @@
 'use client'
+import CommonContent from '@/components/common/CommonContent'
 import { Button } from '@/styles/CommonStyles'
 import Image from 'next/image'
 import React, { useState, useEffect, useRef } from 'react'
@@ -67,7 +68,7 @@ export default function DesignerWeb() {
           <CoverSubtitle>
             <SubTitleText>헤어디자이너의</SubTitleText>
             <SubTitleText>모델 구인부터 커리어를 위한</SubTitleText>
-            <SubTitleText>단 하나의 앱, 미몽</SubTitleText>
+            <SubTitleText>단 하나 앱, 미몽</SubTitleText>
           </CoverSubtitle>
           <ButtonGroup>
             <LinkButton
@@ -134,66 +135,138 @@ export default function DesignerWeb() {
           }}
         >
           {item === '헤어모델 매칭' ? (
-            <HairModelMatchingSection>
-              <TextArea>
-                <TextAreaInner>
-                  <MainTitle>
-                    <span>01. 헤어모델 찾기</span>
-                    <h2>
-                      바쁜 헤어디자이너를 위한
-                      <br />
-                      빠르고 안전한 모델 찾기
-                    </h2>
-                  </MainTitle>
-                  <FeatureList>
-                    <FeatureItem>
-                      <IconWrapper>
-                        <MultiCircleIcon src="/assets/images/hair-model/multi-circle.svg" alt="Feature1" />
-                      </IconWrapper>
-                      <FeatureContent>
-                        <FeatureTitle>5분만에 원하는 모델 찾기</FeatureTitle>
-                        <FeatureDescription>
-                          페이, 거리, 성별, 국적부터 원하는 헤어, 얼굴 시술까지
-                          <br />
-                          내가 필요로 하는 모델들을 서칭해보세요.
-                        </FeatureDescription>
-                      </FeatureContent>
-                    </FeatureItem>
-                    <FeatureItem>
-                      <IconWrapper>
-                        <CircleIcon src="/assets/images/hair-model/circle.svg" alt="Feature2" />
-                      </IconWrapper>
-                      <FeatureContent>
-                        <FeatureTitle>즉시 채팅으로 시술 제안</FeatureTitle>
-                        <FeatureDescription>
-                          원하는 모델에게 견적서를 보내고
-                          <br />
-                          채팅을 통해 견적서 내 일시, 페이 등을 조율해보세요.
-                        </FeatureDescription>
-                      </FeatureContent>
-                    </FeatureItem>
-                    <FeatureItem>
-                      <IconWrapper>
-                        <CircleIcon src="/assets/images/hair-model/circle.svg" alt="Feature3" />
-                      </IconWrapper>
-                      <FeatureContent>
-                        <FeatureTitle>앱에서 바로 초상권 계약</FeatureTitle>
-                        <FeatureDescription>
-                          초상권 계약 내 모델 서명까지 완료시,
-                          <br />
-                          시술 내역 및 결과물을 포트폴리오에서 모아서 관리할 수 있어요.
-                        </FeatureDescription>
-                      </FeatureContent>
-                    </FeatureItem>
-                  </FeatureList>
-                </TextAreaInner>
-              </TextArea>
-              <ImageArea>
-                <MobileImage src="/assets/images/hair-model/hairmodel1.png" alt="Hair Model 1" />
-                <MobileImage src="/assets/images/hair-model/hairmodel2.png" alt="Hair Model 2" />
-                <MobileImage src="/assets/images/hair-model/hairmodel3.png" alt="Hair Model 3" />
-              </ImageArea>
-            </HairModelMatchingSection>
+            <ContentSection>
+              <MatchingContent style={{ margin: '150px 0' }}>
+                <TextArea>
+                  <TextAreaInner>
+                    <MainTitle>
+                      <span>01. 헤어모델 찾기</span>
+                      <h2>
+                        바쁜 헤어디자이너를 위한
+                        <br />
+                        빠르고 안전한 모델 찾기
+                      </h2>
+                    </MainTitle>
+                    <FeatureList>
+                      <FeatureItem>
+                        <IconWrapper>
+                          <MultiCircleIcon src="/assets/images/hairmodel/parts/multi-circle.svg" alt="Feature1" />
+                        </IconWrapper>
+                        <FeatureContent>
+                          <FeatureTitle>5분만에 원하는 모델 찾기</FeatureTitle>
+                          <FeatureDescription>
+                            페이, 거리, 성별, 국적부터 원하는 헤어, 얼굴 시술까지
+                            <br />
+                            내가 필요로 하는 모델들을 서칭해보세요.
+                          </FeatureDescription>
+                        </FeatureContent>
+                      </FeatureItem>
+                      <FeatureItem>
+                        <IconWrapper>
+                          <CircleIcon src="/assets/images/hairmodel/parts/circle.svg" alt="Feature2" />
+                        </IconWrapper>
+                        <FeatureContent>
+                          <FeatureTitle>즉시 채팅으로 시술 제안</FeatureTitle>
+                          <FeatureDescription>
+                            원하는 모델에게 견적서를 보내고
+                            <br />
+                            채팅을 통해 견적서 내 일시, 페이 등을 조율해보세요.
+                          </FeatureDescription>
+                        </FeatureContent>
+                      </FeatureItem>
+                      <FeatureItem>
+                        <IconWrapper>
+                          <CircleIcon src="/assets/images/hairmodel/parts/circle.svg" alt="Feature3" />
+                        </IconWrapper>
+                        <FeatureContent>
+                          <FeatureTitle>앱에서 바로 초상권 계약</FeatureTitle>
+                          <FeatureDescription>
+                            초상권 계약 내 모델 서명까지 완료시,
+                            <br />
+                            시술 내역 및 결과물을 포트폴리오에서 모아서 관리할 수 있어요.
+                          </FeatureDescription>
+                        </FeatureContent>
+                      </FeatureItem>
+                    </FeatureList>
+                  </TextAreaInner>
+                </TextArea>
+                <ImageArea>
+                  <FindHairModelPhoneImage src="/assets/images/hairmodel/find-hairmodel-web1.png" alt="Hair Model 1" />
+                  <FindHairModelPhoneImage src="/assets/images/hairmodel/find-hairmodel-web2.png" alt="Hair Model 2" />
+                  <FindHairModelPhoneImage src="/assets/images/hairmodel/find-hairmodel-web3.png" alt="Hair Model 3" />
+                </ImageArea>
+              </MatchingContent>
+              <ThunderMatchingContent style={{ padding: '10% 10% 0 10%' }}>
+                <TextArea>
+                  <TextAreaInner style={{ marginTop: '10%' }}>
+                    <MainTitle>
+                      <span>02. 번개 매칭</span>
+                      <h2>
+                        급할 때는 번개매칭
+                        <br />
+                        번개 매칭으로 바로 찾기
+                      </h2>
+                    </MainTitle>
+                    <TextDescription>시술하기로한 모델이 갑자기 취소되었나요?</TextDescription>
+                    <TextDescription>급하게 모델이 필요한 경우,더 빠르게 매칭할 수 있는</TextDescription>
+                    <TextDescription>모델 급구게시판을 이용해보세요.</TextDescription>
+                    <TextDescription>더욱 빠른 매칭을 경험할 수 있어요.</TextDescription>
+                  </TextAreaInner>
+                </TextArea>
+                <ImageArea>
+                  <PhoneImage
+                    width="50%"
+                    src="/assets/images/hairmodel/thunder-matching-web1.png"
+                    alt="Thunder Matching 1"
+                  />
+                  <PhoneImage
+                    width="50%"
+                    src="/assets/images/hairmodel/thunder-matching-web2.png"
+                    alt="Thunder Matching 2"
+                  />
+                </ImageArea>
+              </ThunderMatchingContent>
+            </ContentSection>
+          ) : item === '구인구직' ? (
+            <ContentSection>
+              <CommonContent
+                title1="구인구직은 미몽으로"
+                title2="면접 보는 시간도 아끼세요"
+                description1="미몽 앱 안에서 원하는 매장으로"
+                description2="바로바로 이력서를 전송하세요."
+                images={['/assets/images/recruit/recruit1.png', '/assets/images/recruit/recruit2.png']}
+                title2Color="#8276F5"
+                ImageContainerStyle={{
+                  marginTop: '50px'
+                }}
+              />
+              <CommonContent
+                title1="구인구직은 미몽으로"
+                title2="내가 원하는 매장만 즉시 찾기"
+                description1="미용인의 눈높에이 맞춘 상세한 필터 덕분에"
+                description2="원하는 매장을 즉시 찾을 수 있어요!"
+                images={['/assets/images/recruit/recruit3.png', '/assets/images/recruit/recruit4.png']}
+                title2Color="#8276F5"
+                backgroundColor="#F8F7FF"
+              />
+              <CommonContent
+                title1="구인구직은 미몽으로"
+                title2="내 주변 가까운 매장만 바로찾기"
+                description1="위치 기준으로 근처 매장도"
+                description2="빠르게 찾고 지원할 수 있어요!"
+                images={['/assets/images/recruit/recruit5.png', '/assets/images/recruit/recruit6.png']}
+                title2Color="#8276F5"
+              />
+              <CommonContent
+                title1="구인구직은 미몽으로"
+                title2="중요한 면접 일정 알림 받기"
+                description1="바쁜 일정에도 중요한 면접 날짜를 잊지 않도록"
+                description2="카카오톡 및 앱 푸시 알림으로 안내해 드려요!"
+                images={['/assets/images/recruit/recruit7.png', '/assets/images/recruit/recruit8.png']}
+                title2Color="#8276F5"
+                backgroundColor="#F8F7FF"
+              />
+            </ContentSection>
           ) : (
             `${item} 섹션`
           )}
@@ -238,7 +311,7 @@ const MainCover = styled.div`
 
 const CoverContent = styled.div`
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -368,26 +441,44 @@ const Section = styled.div`
   border-bottom: 1px solid #ccc;
 `
 
-const HairModelMatchingSection = styled.div`
-  padding: 150px 0;
+const ContentSection = styled.div`
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const MatchingContent = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+const ThunderMatchingContent = styled(MatchingContent)`
+  background-color: #d1ccff;
+  padding-top: 200px;
 `
 
 const TextArea = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-end; */
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    justify-content: center;
+  }
 `
 
-const TextAreaInner = styled.div`
-  /* width: 620px; */
+const TextAreaInner = styled.div<{ padding?: string }>`
+  padding: ${(props) => (props.padding ? props.padding : '0px 30px')};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -402,7 +493,7 @@ const MainTitle = styled.div`
   }
 
   h2 {
-    font-size: clamp(32px, 2vw, 52px);
+    font-size: clamp(40px, 2vw, 52px);
     margin-top: 10px;
   }
 `
@@ -414,7 +505,7 @@ const FeatureList = styled.div`
     position: absolute;
     left: 28px; // 아이콘의 중앙에 맞추기 위해 조정
     top: 56px; // 첫 번째 아이콘 아래부터 시작
-    bottom: 28px; // 마지막 아이콘 중앙까지
+    bottom: 28px; // 마지막 ��이콘 중앙까지
     width: 1px;
     height: 300px;
     background-image: url('/assets/images/hair-model/vertical-line.svg');
@@ -424,7 +515,12 @@ const FeatureList = styled.div`
 const FeatureItem = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  // 화면에 따라 margin-bottom 조정
+
+  @media (max-width: 1280px) {
+    margin-bottom: 20px;
+  }
 `
 
 const IconWrapper = styled.div`
@@ -449,7 +545,8 @@ const CircleIcon = styled.img`
 const FeatureContent = styled.div``
 
 const FeatureTitle = styled.h3`
-  font-size: clamp(24px, 2.5vw, 32px);
+  font-size: clamp(24px, 2vw, 32px);
+  margin-top: 10px;
   margin-bottom: 10px;
 `
 
@@ -458,29 +555,36 @@ const FeatureDescription = styled.p`
   color: #666;
 `
 
-const ImageArea = styled.div`
+const ImageArea = styled.div<{ padding?: string }>`
   flex: 1;
   display: flex;
   right: 0;
   justify-content: flex-end;
   gap: 20px;
+  padding: ${(props) => (props.padding ? props.padding : '0')};
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 50px;
+  }
 `
 
-const MobileImage = styled.img`
-  width: 40%;
+const FindHairModelPhoneImage = styled.img`
+  width: 35%;
   &:last-child {
-    width: 32.5%;
+    width: 28.5%;
     max-width: 260px;
   }
   max-width: 320px; // 최대 너비 설정
   height: auto;
   object-fit: contain;
 
-  @media (max-width: 1600px) {
-    width: 33%; // 화면이 작아질 때 너비를 조정
+  @media (max-width: 1024px) {
+    max-width: 260px;
     &:last-child {
-      width: 26.5%;
-      max-width: 212px;
+      max-width: 210px;
     }
   }
 
@@ -491,4 +595,14 @@ const MobileImage = styled.img`
       margin-right: -20%; // 마지막 이미지 조정
     }
   }
+`
+
+const PhoneImage = styled.img`
+  width: ${(props) => (props.width ? props.width : '100%')};
+  height: ${(props) => (props.height ? props.height : 'auto')};
+`
+
+const TextDescription = styled.p`
+  font-size: clamp(20px, 1.5vw, 24px);
+  color: #666;
 `
