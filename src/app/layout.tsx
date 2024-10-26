@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import StyledComponentsRegistry from '../lib/registry'
-import { ResponsiveRouter } from '../components/ResponsiveRouter'
-import ClientGlobalStyle from '@/components/ClientGlobalStyle'
+import { ResponsiveRouter } from '../utils/ResponsiveRouter'
+import ClientGlobalStyle from '@/styles/ClientGlobalStyle'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',

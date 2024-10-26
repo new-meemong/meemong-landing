@@ -4,6 +4,11 @@ import { Button } from '@/styles/CommonStyles'
 import Image from 'next/image'
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import FavoriteModel from '@/components/FavoriteModelSection'
+import FavoriteModelSection from '@/components/FavoriteModelSection'
+import ReviewSection from '@/components/ReviewSection'
+import PlanSection from '@/components/PlanSection'
+import FooterSection from '@/components/common/FooterSection'
 
 export default function DesignerWeb() {
   const [activeSection, setActiveSection] = useState('헤어모델 매칭')
@@ -116,7 +121,7 @@ export default function DesignerWeb() {
         </DataContainer>
       </DataSection>
 
-      {/* Navigation */}
+      {/* 네비게이션바 */}
       <Navigation>
         {navItems.map((item) => (
           <NavItem key={item} active={activeSection === item} onClick={() => scrollToSection(item)}>
@@ -125,7 +130,7 @@ export default function DesignerWeb() {
         ))}
       </Navigation>
 
-      {/* Sections */}
+      {/* 네이게이션 컨텐츠 영역 */}
       {navItems.map((item) => (
         <Section
           key={item}
@@ -267,11 +272,53 @@ export default function DesignerWeb() {
                 backgroundColor="#F8F7FF"
               />
             </ContentSection>
+          ) : item === '스페어' ? (
+            <ContentSection>
+              <CommonContent
+                title1="스페어 구인공고도 미몽으로"
+                title2="잠깐 필요한 스페어구도 바로"
+                description1="성수기에 피룡한 스페어 구인"
+                description2="바로 올리고 바로 구하세요!"
+                images={['/assets/images/spare/spare1.png', '/assets/images/spare/spare2.png']}
+                title2Color="#8276F5"
+              />
+            </ContentSection>
+          ) : item === '교육' ? (
+            <ContentSection>
+              <CommonContent
+                title1="디자이너 실력향상"
+                title2="새로운 헤어트렌드와 기술 학습"
+                description1="미용 아카데미 '캐미티드'와의 제휴 할인 기회를 제공"
+                description2=""
+                images={['/assets/images/education/education1.png', '/assets/images/education/education2.png']}
+                title2Color="#8276F5"
+              />
+            </ContentSection>
           ) : (
-            `${item} 섹션`
+            ''
           )}
         </Section>
       ))}
+
+      {/* 인기있는모델 섹션 */}
+      <FavoriteModelSection
+        images={[
+          '/assets/images/review/review1.png',
+          '/assets/images/review/review2.png',
+          '/assets/images/review/review3.png',
+          '/assets/images/review/review4.png'
+        ]}
+        names={['조** 모델', '김** 모델', '이** 모델', '박** 모델']}
+      />
+
+      {/* 리뷰 섹션 */}
+      <ReviewSection />
+
+      {/* 플랜안내 섹션 */}
+      <PlanSection />
+
+      {/* Footer 섹션 */}
+      <FooterSection />
     </>
   )
 }
@@ -371,6 +418,11 @@ const LinkButton = styled.a`
   background-color: transparent;
   cursor: pointer;
   text-decoration: none;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
 const DataSection = styled.section`
@@ -437,8 +489,6 @@ const Section = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  border-bottom: 1px solid #ccc;
 `
 
 const ContentSection = styled.div`
@@ -505,7 +555,7 @@ const FeatureList = styled.div`
     position: absolute;
     left: 28px; // 아이콘의 중앙에 맞추기 위해 조정
     top: 56px; // 첫 번째 아이콘 아래부터 시작
-    bottom: 28px; // 마지막 ��이콘 중앙까지
+    bottom: 28px; // 마지막 이콘 중앙까지
     width: 1px;
     height: 300px;
     background-image: url('/assets/images/hair-model/vertical-line.svg');
