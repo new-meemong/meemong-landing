@@ -1,22 +1,31 @@
+'use client'
+
 import useContractCount from '@/hooks/useContractCount'
 import useCountUp from '@/hooks/useCountUp'
 import useUserCount from '@/hooks/useUserCount'
 import React from 'react'
 import styled from 'styled-components'
 import { SkeletonText } from './Skeleton'
+import dynamic from 'next/dynamic'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
+const DynamicDateDisplay = dynamic(() => import('./DateDisplay'), { ssr: false })
+
+// 메인 컴포넌트
 const CountDataSection = () => {
   const { contractCount, isLoading: isContractCountLoading, error: contractCountError } = useContractCount()
   const { userCount, isLoading: isUserCountLoading, error: userCountError } = useUserCount()
 
-  const animatedModelCount = useCountUp(userCount?.activeUsers.Model || 0, 1500)
-  const animatedDesignerCount = useCountUp(userCount?.activeUsers.Designer || 0, 2000)
+  const animatedModelCount = useCountUp(userCount?.activeUsers?.Model || 0, 1500)
+  const animatedDesignerCount = useCountUp(userCount?.activeUsers?.Designer || 0, 2000)
   const animatedContractCount = useCountUp(contractCount || 0, 2500)
   const animatedTotalUserCount = useCountUp((userCount?.designerCount || 0) + (userCount?.modelCount || 0), 3000)
 
+  const isMobile = useIsMobile()
+
   return (
     <DataSection>
-      <Date>2024. 02. 24 14:00:13</Date>
+      <DynamicDateDisplay />
       <DataContainer>
         <DataItem>
           <DataKey>헤어모델</DataKey>
@@ -43,7 +52,7 @@ const CountDataSection = () => {
           )}
         </DataItem>
         <DataItem>
-          <DataKey>누적 초상권 계약수</DataKey>
+          <DataKey>{isMobile ? '누적 초상권' : '누적 초상권 계약수'}</DataKey>
           {isContractCountLoading ? (
             <SkeletonText />
           ) : contractCountError ? (
@@ -77,12 +86,10 @@ const DataSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   padding: 50px 20%;
-`
 
-const Date = styled.time`
-  color: rgba(0, 0, 0, 0.3);
-  margin-left: 3%;
-  font-size: clamp(14px, 1.5vw, 20px);
+  @media (max-width: 768px) {
+    padding: 2rem 5%;
+  }
 `
 
 const DataContainer = styled.div`
@@ -107,12 +114,21 @@ const DataKey = styled.span`
   margin-bottom: 20px;
   color: #000;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+  }
 `
 
 const DataValue = styled.span`
   font-size: clamp(20px, 1.67vw, 32px);
   color: #000;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+    font-weight: 400;
+  }
 `
 
 export default CountDataSection

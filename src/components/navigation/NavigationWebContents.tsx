@@ -1,122 +1,24 @@
-'use client'
-import CommonContent from '@/components/common/CommonContent'
-import { Button } from '@/styles/CommonStyles'
-import Image from 'next/image'
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import FavoriteModelSection from '@/components/FavoriteModelSection'
-import ReviewSection from '@/components/ReviewSection'
-import PlanSection from '@/components/PlanSection'
-import FooterSection from '@/components/common/FooterSection'
-import CountDataSection from '@/components/CountDataSection'
+import CommonContent from '../common/CommonContent'
+import { theme } from '@/common/theme'
 
-export default function DesignerWeb() {
-  const [activeSection, setActiveSection] = useState('헤어모델 매칭')
-  const navItems = ['헤어모델 매칭', '구인구직', '스페어', '교육']
-  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+interface NavigationWebContentsProps {
+  navItems: string[]
+  sectionRefs: React.MutableRefObject<{
+    [key: string]: HTMLDivElement | null
+  }>
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2
-
-      for (const section of navItems) {
-        const element = sectionRefs.current[section]
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [navItems])
-
-  const scrollToSection = (section: string) => {
-    const element = sectionRefs.current[section]
-    if (element) {
-      const navHeight = 120 // Navigation height
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - navHeight
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
-  }
-
+const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsProps) => {
   return (
     <>
-      {/* Header */}
-      <Header>
-        <HeaderInner>
-          <LogoBox>
-            <Image src="/assets/logo/logo-web.svg" alt="logo" width={30} height={30} />
-            <span>미몽 MEEMONG</span>
-          </LogoBox>
-          <Button>
-            <span>헤어모델 페이지 가기</span>
-            <Image width={9} height={12} src="/assets/chevron/right-chevron.svg" alt="arrow" />
-          </Button>
-        </HeaderInner>
-      </Header>
-
-      {/* 메인 커버 */}
-      <MainCover>
-        <Image src="/assets/images/cover.png" alt="cover" layout="responsive" width={1920} height={1080} priority />
-        <CoverContent>
-          <CoverTitle>헤어분야에서 가장 빠르게 성장하고 있는 앱!</CoverTitle>
-          <CoverSubtitle>
-            <SubTitleText>헤어디자이너의</SubTitleText>
-            <SubTitleText>모델 구인부터 커리어를 위한</SubTitleText>
-            <SubTitleText>단 하나 앱, 미몽</SubTitleText>
-          </CoverSubtitle>
-          <ButtonGroup>
-            <LinkButton
-              href="https://play.google.com/store/apps/details?id=com.meemong.second&pcampaignid=web_share"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src="/assets/images/app-store.svg" alt="app-store" width={200} height={60} />
-            </LinkButton>
-            <LinkButton
-              href="https://apps.apple.com/kr/app/%EB%AF%B8%EB%AA%BD-%EB%8B%B9%EC%8B%A0%EB%8F%84-%ED%97%A4%EC%96%B4%EB%AA%A8%EB%8D%B8/id1572588554?l=en-GB"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src="/assets/images/google-play.svg" alt="google-play" width={200} height={60} />
-            </LinkButton>
-          </ButtonGroup>
-          <ModelPageButton>
-            <span>헤어모델 전용 페이지 가기</span>
-            <Image width={9} height={12} src="/assets/chevron/right-chevron.svg" alt="arrow" />
-          </ModelPageButton>
-        </CoverContent>
-      </MainCover>
-
-      {/* 데이터 영역 */}
-      <CountDataSection />
-
-      {/* 네비게이션바 */}
-      <Navigation>
-        {navItems.map((item) => (
-          <NavItem key={item} active={activeSection === item} onClick={() => scrollToSection(item)}>
-            {item}
-          </NavItem>
-        ))}
-      </Navigation>
-
-      {/* 네이게이션 컨텐츠 영역 */}
       {navItems.map((item) => (
         <Section
           key={item}
           id={item}
           ref={(el) => {
-            sectionRefs.current[item] = el
+            sectionRefs.current[item] = el as HTMLDivElement
           }}
         >
           {item === '헤어모델 매칭' ? (
@@ -215,52 +117,52 @@ export default function DesignerWeb() {
           ) : item === '구인구직' ? (
             <ContentSection>
               <CommonContent
-                title1="구인구직은 미몽으로"
-                title2="면접 보는 시간도 아끼세요"
+                title1="구인구직은 미몽에서"
+                title2="면접 보는 시간도\n아끼세요"
                 description1="미몽 앱 안에서 원하는 매장으로"
                 description2="바로바로 이력서를 전송하세요."
                 images={['/assets/images/recruit/recruit1.png', '/assets/images/recruit/recruit2.png']}
-                title2Color="#8276F5"
+                title2Color={theme.colors.primary}
                 ImageContainerStyle={{
                   marginTop: '50px'
                 }}
               />
               <CommonContent
-                title1="구인구직은 미몽으로"
+                title1="구인구직은 미몽에서"
                 title2="내가 원하는 매장만 즉시 찾기"
                 description1="미용인의 눈높이에 맞춘 상세한 필터 덕분에"
                 description2="원하는 매장을 즉시 찾을 수 있어요!"
                 images={['/assets/images/recruit/recruit3.png', '/assets/images/recruit/recruit4.png']}
-                title2Color="#8276F5"
+                title2Color={theme.colors.primary}
                 backgroundColor="#F8F7FF"
               />
               <CommonContent
-                title1="구인구직은 미몽으로"
+                title1="구인구직은 미몽에서"
                 title2="내 주변 가까운 매장만 바로찾기"
                 description1="위치 기준으로 근처 매장도"
                 description2="빠르게 찾고 지원할 수 있어요!"
                 images={['/assets/images/recruit/recruit5.png', '/assets/images/recruit/recruit6.png']}
-                title2Color="#8276F5"
+                title2Color={theme.colors.primary}
               />
               <CommonContent
-                title1="구인구직은 미몽으로"
+                title1="구인구직은 미몽에서"
                 title2="중요한 면접 일정 알림 받기"
                 description1="바쁜 일정에도 중요한 면접 날짜를 잊지 않도록"
                 description2="카카오톡 및 앱 푸시 알림으로 안내해 드려요!"
                 images={['/assets/images/recruit/recruit7.png', '/assets/images/recruit/recruit8.png']}
-                title2Color="#8276F5"
+                title2Color={theme.colors.primary}
                 backgroundColor="#F8F7FF"
               />
             </ContentSection>
           ) : item === '스페어' ? (
             <ContentSection>
               <CommonContent
-                title1="스페어 구인공고도 미몽으로"
+                title1="스페어 구인공고도 미몽에서"
                 title2="잠깐 필요한 스페어구인도 바로"
-                description1="성수기에 피룡한 스페어 구인"
+                description1="성수기에 피한 스페어 구인"
                 description2="바로 올리고 바로 구하세요!"
                 images={['/assets/images/spare/spare1.png', '/assets/images/spare/spare2.png']}
-                title2Color="#8276F5"
+                title2Color={theme.colors.primary}
               />
             </ContentSection>
           ) : item === '교육' ? (
@@ -271,7 +173,7 @@ export default function DesignerWeb() {
                 description1="미용 아카데미 '캐미티드'와의 제휴 할인 기회를 제공"
                 description2=""
                 images={['/assets/images/education/education1.png', '/assets/images/education/education2.png']}
-                title2Color="#8276F5"
+                title2Color={theme.colors.primary}
               />
             </ContentSection>
           ) : (
@@ -279,146 +181,9 @@ export default function DesignerWeb() {
           )}
         </Section>
       ))}
-
-      {/* 인기있는모델 섹션 */}
-      <FavoriteModelSection
-        images={[
-          '/assets/images/review/review1.png',
-          '/assets/images/review/review2.png',
-          '/assets/images/review/review3.png',
-          '/assets/images/review/review4.png'
-        ]}
-        names={['조** 모델', '김** 모델', '이** ', '박** 모델']}
-      />
-
-      {/* 리뷰 섹션 */}
-      <ReviewSection />
-
-      {/* 플랜안내 섹션 */}
-      <PlanSection />
-
-      {/* Footer 섹션 */}
-      <FooterSection />
     </>
   )
 }
-
-const Header = styled.header`
-  background-color: #fff;
-  // Remove fixed positioning
-`
-
-const HeaderInner = styled.div`
-  max-width: 1200px;
-  height: 110px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const LogoBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-
-  span {
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
-    font-weight: bold;
-    color: #333;
-  }
-`
-
-const MainCover = styled.div`
-  width: 100%;
-  position: relative;
-`
-
-const CoverContent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const CoverTitle = styled.h1`
-  font-size: clamp(24px, 2.5vw, 40px);
-  margin-bottom: 1rem;
-  white-space: nowrap;
-`
-
-const CoverSubtitle = styled.span`
-  font-size: clamp(36px, 5vw, 72px);
-  margin-bottom: 2rem;
-  white-space: pre-line;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const SubTitleText = styled.p`
-  font-size: clamp(36px, 5vw, 72px);
-  white-space: nowrap;
-  line-height: 1.2;
-`
-
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-`
-
-const ModelPageButton = styled(Button)`
-  background-color: white;
-  color: black;
-  margin-top: 60px;
-`
-
-const LinkButton = styled.a`
-  display: inline-block;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`
-
-const Navigation = styled.nav`
-  position: sticky;
-  top: 0; // Changed from top: 110px
-  background-color: black;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-`
-
-const NavItem = styled.a<{ active: boolean }>`
-  color: white;
-  font-size: 40px;
-  margin: 0 20px;
-  cursor: pointer;
-  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`
 
 const Section = styled.div`
   display: flex;
@@ -478,7 +243,7 @@ const MainTitle = styled.div`
   }
 
   h2 {
-    font-size: clamp(40px, 2vw, 52px);
+    font-size: clamp(32px, 2vw, 52px);
     margin-top: 10px;
   }
 `
@@ -488,9 +253,9 @@ const FeatureList = styled.div`
   &::before {
     content: '';
     position: absolute;
-    left: 28px; // 아이콘의 중앙에 맞추기 위해 조정
-    top: 56px; // 첫 번째 아이콘 아래부터 시작
-    bottom: 28px; // 마지막 이콘 중앙까지
+    left: 28px;
+    top: 56px;
+    bottom: 28px;
     width: 1px;
     height: 300px;
     background-image: url('/assets/images/hairmodel/parts/vertical-line.svg');
@@ -501,7 +266,6 @@ const FeatureItem = styled.div`
   display: flex;
   align-items: flex-start;
   margin-bottom: 40px;
-  // 화면에 따라 margin-bottom 조정
 
   @media (max-width: 1280px) {
     margin-bottom: 20px;
@@ -550,7 +314,7 @@ const ImageArea = styled.div<{ padding?: string }>`
 
   @media (max-width: 1024px) {
     width: 100%;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 15px;
     margin-top: 50px;
   }
@@ -562,7 +326,7 @@ const FindHairModelPhoneImage = styled.img`
     width: 28.5%;
     max-width: 260px;
   }
-  max-width: 320px; // 최대 너비 설정
+  max-width: 320px;
   height: auto;
   object-fit: contain;
 
@@ -570,14 +334,6 @@ const FindHairModelPhoneImage = styled.img`
     max-width: 260px;
     &:last-child {
       max-width: 210px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    width: 40%; // 모바일 화면에서의 너비
-
-    &:last-child {
-      margin-right: -20%; // 마지막 이미지 조정
     }
   }
 `
@@ -591,3 +347,5 @@ const TextDescription = styled.p`
   font-size: clamp(20px, 1.5vw, 24px);
   color: #666;
 `
+
+export default NavigationWebContents

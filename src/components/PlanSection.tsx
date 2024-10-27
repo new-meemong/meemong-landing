@@ -1,74 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import { planData } from '@/common/data'
+import { useIsMobile } from '@/hooks/useIsMobile'
+import { theme } from '@/common/theme'
 
-interface PlanCardProps {
-  icon: string
-  title: string
-  description: string
-  details: string[]
-  price: string
-  disabled: boolean
-  priceDescription: string
-}
-
-const PlanSection: React.FC = () => {
-  const plans: PlanCardProps[] = [
-    {
-      icon: '/assets/images/plan/gift.png',
-      title: '무료 플랜',
-      description: '직접 경험해 보세요',
-      details: [
-        '무제한 무료 매칭',
-        '채팅방 유효기간이 60일',
-        '계약서 기능 및 관리',
-        '포트폴리오 20개까지',
-        '채널톡으로 언제, 어디서든 고객 지원'
-      ],
-      price: '무료',
-      priceDescription: '이벤트 종료시점까지',
-      disabled: false
-    },
-    {
-      icon: '/assets/images/plan/bulb.png',
-      title: '월간 구독',
-      description: '더 많은 포트폴리오와 매칭이 필요할 때',
-      details: [
-        '무제한 무료 매칭',
-        '채팅방 유효기간이 60일',
-        '계약서 기능 및 관리',
-        '포트폴리오 20개까지',
-        '채널톡으로 언제, 어디서든 고객 지원'
-      ],
-      price: '추후 공개',
-      priceDescription: '',
-      disabled: true
-    },
-    {
-      icon: '/assets/images/plan/bulb.png',
-      title: '연간 구독',
-      description: '나만의 퍼스널브랜딩을 위한 최고의 선택',
-      details: [
-        '무제한 무료 매칭',
-        '채팅방 유효기간이 60일',
-        '계약서 기능 및 관리',
-        '포트폴리오 20개까지',
-        '채널톡으로 언제, 어디서든 고객 지원'
-      ],
-      price: '추후 공개',
-      priceDescription: '',
-      disabled: true
-    }
-    // 나머지 두 개의 플랜 데이터를 추가해주세요.
-  ]
-
+const PlanSection = () => {
+  const isMobile = useIsMobile()
   return (
     <StyledPlanSection>
       <CoinIcon src="/assets/images/plan/coin.png" alt="Coin Icon" width={80} height={80} />
       <Description>미몽은 지금 앱 스토어에서 설치 가능합니다.</Description>
-      <Title>헤어디자이너라면 지금 무료로 시작하세요.</Title>
+
+      {isMobile ? (
+        <>
+          <Title>헤어디자이너라면 지금</Title>
+          <Title>무료로 시작하세요.</Title>
+        </>
+      ) : (
+        <Title>헤어디자이너라면 지금 무료로 시작하세요.</Title>
+      )}
       <PlanCardContainer>
-        {plans.map((plan, index) => (
+        {planData.map((plan, index) => (
           <PlanCard key={index} disabled={plan.disabled}>
             <PlanCardInner>
               <CardIcon src={plan.icon} alt={`${plan.title} Icon`} width={40} height={40} />
@@ -81,7 +34,9 @@ const PlanSection: React.FC = () => {
               </DetailList>
             </PlanCardInner>
             <CardPrice>
-              <span className="price">{plan.price}</span>
+              <span className="price" style={plan.disabled ? { color: theme.colors.gray300 } : {}}>
+                {plan.price}
+              </span>
               {plan.priceDescription && <span className="price-description">{`(${plan.priceDescription})`}</span>}
             </CardPrice>
           </PlanCard>
@@ -104,6 +59,10 @@ const CoinIcon = styled(Image)`
   height: 48px;
   margin-top: 150px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 5rem;
+  }
 `
 
 const Description = styled.p`
@@ -111,12 +70,25 @@ const Description = styled.p`
   color: #8276f5;
   margin-bottom: 10px;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    font-size: 1.2rem;
+  }
 `
 
 const Title = styled.h2`
   font-size: clamp(40px, 2.5vw, 60px);
   color: #8276f5;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1.5;
+    padding: 0 2rem;
+    margin: 0;
+  }
 `
 
 const PlanCardContainer = styled.div`
@@ -125,6 +97,10 @@ const PlanCardContainer = styled.div`
   gap: 20px;
   flex-wrap: wrap;
   padding-bottom: 150px;
+
+  @media (max-width: 768px) {
+    margin-top: 2.5rem;
+  }
 `
 
 const PlanCard = styled.div<{ disabled: boolean }>`
@@ -135,6 +111,7 @@ const PlanCard = styled.div<{ disabled: boolean }>`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   transition: opacity 0.3s ease;
+  border: 5px solid ${theme.colors.primary};
 `
 
 const PlanCardInner = styled.div`
@@ -143,6 +120,10 @@ const PlanCardInner = styled.div`
   align-items: flex-start;
   padding: 30px;
   border-bottom: 2px solid #dedbdb;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `
 
 const CardIcon = styled(Image)`

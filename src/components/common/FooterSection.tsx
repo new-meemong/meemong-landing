@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const FooterSection = () => {
+  const isMobile = useIsMobile()
   return (
     <Footer>
       <CustomerServiceArea>
@@ -13,7 +15,7 @@ const FooterSection = () => {
           <ContactRow>
             <ContactItem>
               <ContactLabel>가능시간</ContactLabel>
-              <ContactValue>평일 09:00 ~ 18:00 / 점심시간 12:00 ~ 13:30</ContactValue>
+              <ContactValue>평일 09:00~18:00 / 점심시간 12:00~13:30</ContactValue>
             </ContactItem>
             <ContactItem>
               <ContactLabel>대표 메일</ContactLabel>
@@ -38,75 +40,118 @@ const FooterSection = () => {
               </ContactValue>
             </ContactItem>
           </ContactRow>
-          <Links>
-            <LinkButton href="/faq">
-              <span>FAQ</span>
-              <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
-            </LinkButton>
-            <LinkButton href="/inquiry">
-              <span>1:1문의</span>
-              <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
-            </LinkButton>
-            <LinkButton href="/notice">
-              <span>공지사항</span>
-              <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
-            </LinkButton>
-          </Links>
+          {!isMobile && (
+            <Links>
+              <LinkButton href="/faq">
+                <span>FAQ</span>
+                <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
+              </LinkButton>
+              <LinkButton href="/inquiry">
+                <span>1:1문의</span>
+                <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
+              </LinkButton>
+              <LinkButton href="/notice">
+                <span>공지사항</span>
+                <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
+              </LinkButton>
+            </Links>
+          )}
         </ForCustomer>
-        <ServiceGuide>
-          <Column>
-            <span>미몽</span>
-            <Link href="/about">미몽 서비스 소개</Link>
-            <Link href="/ad">광고안내</Link>
-          </Column>
-          <Column>
-            <span>다운로드</span>
-            <Link href="/android">Android</Link>
-            <Link href="/ios">iOS</Link>
-          </Column>
-          <Column>
-            <span>고객센터</span>
-            <Link href="/notice">공지사항</Link>
-            <Link href="/faq">FAQ</Link>
-          </Column>
-        </ServiceGuide>
+        {!isMobile && (
+          <ServiceGuide>
+            <Column>
+              <span>미몽</span>
+              <Link href="/about">미몽 서비스 소개</Link>
+              <Link href="/ad">광고안내</Link>
+            </Column>
+            <Column>
+              <span>다운로드</span>
+              <Link href="/android">Android</Link>
+              <Link href="/ios">iOS</Link>
+            </Column>
+            <Column>
+              <span>고객센터</span>
+              <Link href="/notice">공지사항</Link>
+              <Link href="/faq">FAQ</Link>
+            </Column>
+          </ServiceGuide>
+        )}
       </CustomerServiceArea>
       <CompanyInfoArea>
-        <CompanyInfo>
-          <Links>
-            <Link href="/terms">서비스 이용약관</Link>
-            <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
-            <Link href="/privacy">개인정보 보호 및 처리방침</Link>
-          </Links>
-          <CompanyDetails>
-            미몽컴퍼니
-            <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
-            <span className="label">주소</span>
-            <span className="value">서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
-            <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
-            <span className="label">대표이사</span>
-            <span>유주호</span>
-          </CompanyDetails>
-          <CompanyDetails>
-            <span className="label">사업자 등록번호</span>
-            <span>370-87-02039</span>
-            <Link href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=3708702039">
-              <span style={{ color: '#1252F4' }}>사업자정보확인</span>
-            </Link>
-            <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
-            <span className="label">개인정보관리 책임자</span>
-            <span>장혜진</span>
-          </CompanyDetails>
-          <Copyright>Copyright ©2022 meemong Company All Rights Reserved.</Copyright>
-        </CompanyInfo>
-        <SocialLinks>
-          <Link href="https://www.instagram.com/meemong_official" target="_blank" rel="noopener noreferrer">
-            <Image src="/assets/icons/instagram.svg" alt="Instagram" width={30} height={30} />
-          </Link>
-          <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
-            <Image src="/assets/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
-          </Link>
-        </SocialLinks>
+        {isMobile ? (
+          <>
+            <CompanyInfo>
+              <CompanyDetails>
+                <span>미몽컴퍼니</span>
+                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <span className="address">주소 서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
+              </CompanyDetails>
+              <CompanyDetails>
+                <span className="label">대표이사</span>
+                <span>유주호</span>
+              </CompanyDetails>
+              <CompanyDetails>
+                <span className="label">사업자 등록번호</span>
+                <span>370-87-02039</span>
+                <Link href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=3708702039">
+                  <span style={{ color: '#1252F4' }}>사업자정보확인</span>
+                </Link>
+              </CompanyDetails>
+              <CompanyDetails>
+                <span className="label">개인정보관리 책임자</span>
+                <span>장혜진</span>
+              </CompanyDetails>
+              <Copyright>COPYRIGHT ©2022 MEEMONG COMPANY ALL RIGHTS RESERVED.</Copyright>
+            </CompanyInfo>
+            <SocialLinks>
+              <Link href="https://www.instagram.com/meemong_official" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+              </Link>
+              {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
+              </Link> */}
+            </SocialLinks>
+          </>
+        ) : (
+          // 기존의 데스크톱 레이아웃
+          <>
+            <CompanyInfo>
+              <Links>
+                <Link href="/terms">서비스 이용약관</Link>
+                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Link href="/privacy">개인정보 보호 및 처리방침</Link>
+              </Links>
+              <CompanyDetails>
+                미몽컴퍼니
+                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <span className="label">주소</span>
+                <span className="value">서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
+                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <span className="label">대표이사</span>
+                <span>유주호</span>
+              </CompanyDetails>
+              <CompanyDetails>
+                <span className="label">사업자 등록번호</span>
+                <span>370-87-02039</span>
+                <Link href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=3708702039">
+                  <span style={{ color: '#1252F4' }}>사업자정보확인</span>
+                </Link>
+                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <span className="label">개인정보관리 책임자</span>
+                <span>장혜진</span>
+              </CompanyDetails>
+              <Copyright>COPYRIGHT ©2022 meemong Company All Rights Reserved.</Copyright>
+            </CompanyInfo>
+            <SocialLinks>
+              <Link href="https://www.instagram.com/meemong_official/" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+              </Link>
+              {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
+              </Link> */}
+            </SocialLinks>
+          </>
+        )}
       </CompanyInfoArea>
     </Footer>
   )
@@ -117,6 +162,10 @@ export default FooterSection
 const Footer = styled.footer`
   background-color: #eaeded;
   padding: 40px 10%;
+
+  @media (max-width: 768px) {
+    padding: 40px 1.2rem;
+  }
 `
 
 const CustomerServiceArea = styled.div`
@@ -126,6 +175,7 @@ const CustomerServiceArea = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    margin-bottom: 0;
   }
 `
 
@@ -139,6 +189,10 @@ const ForCustomer = styled.div`
 const PhoneNumber = styled.h2`
   font-size: 32px;
   margin: 10px 0;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `
 
 const ContactRow = styled.div`
@@ -159,6 +213,10 @@ const ContactLabel = styled.span`
   opacity: 0.4;
   width: 80px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem !important;
+  }
 `
 
 const ContactValue = styled.span`
@@ -166,6 +224,12 @@ const ContactValue = styled.span`
   color: #303030;
   opacity: 0.8;
   margin-left: 10px;
+
+  @media (max-width: 768px) {
+    white-space: nowrap;
+    margin-left: 0;
+    font-size: 0.8rem !important;
+  }
 `
 
 const Links = styled.div`
@@ -179,6 +243,14 @@ const Links = styled.div`
     color: #303030;
     font-weight: 400;
     text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    gap: 0.5rem;
+    a {
+      margin-right: 0;
+    }
   }
 `
 
@@ -249,6 +321,10 @@ const CompanyInfoArea = styled.div`
 
 const CompanyInfo = styled.div`
   flex: 1;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `
 
 const CompanyDetails = styled.p`
@@ -276,6 +352,21 @@ const CompanyDetails = styled.p`
   .value {
     font-weight: 700;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    flex-wrap: wrap;
+
+    .address {
+      font-weight: 700;
+    }
+    .label {
+      color: #303030;
+      opacity: 0.4;
+      font-weight: 400;
+      font-size: 0.7rem;
+    }
+  }
 `
 
 const Copyright = styled.p`
@@ -283,6 +374,10 @@ const Copyright = styled.p`
   font-size: 13px;
   font-weight: 400;
   margin-top: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
 `
 
 const SocialLinks = styled.div`

@@ -1,24 +1,13 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import StyledComponentsRegistry from '../lib/registry'
-import { ResponsiveRouter } from '../utils/ResponsiveRouter'
 import ClientGlobalStyle from '@/styles/ClientGlobalStyle'
-
-// const geistSans = localFont({
-//   src: './fonts/GeistVF.woff',
-//   variable: '--font-geist-sans',
-//   weight: '100 900'
-// })
-// const geistMono = localFont({
-//   src: './fonts/GeistMonoVF.woff',
-//   variable: '--font-geist-mono',
-//   weight: '100 900'
-// })
+import ClientThemeProvider from '@/components/ClientThemeProvider'
 
 const pretandard = localFont({
   src: './fonts/PretendardVariable.woff2',
   variable: '--font-pretandard',
-  weight: '100 900'
+  weight: '100 200 300 400 500 600 700 800 900'
 })
 
 export const metadata: Metadata = {
@@ -31,14 +20,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${pretandard.variable}`}>
+    <html lang="ko">
+      <body className={pretandard.variable}>
         <StyledComponentsRegistry>
-          <ClientGlobalStyle />
-          {/* <ResponsiveRouter>
+          <ClientThemeProvider>
+            <ClientGlobalStyle />
             {children}
-          </ResponsiveRouter> */}
-          {children}
+          </ClientThemeProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

@@ -1,7 +1,7 @@
 'use client'
 
-import GlobalStyle from './GlobalStyle'
+import GlobalStyles from './GlobalStyles'
 
 export default function ClientGlobalStyle() {
-  return <GlobalStyle />
+  return <GlobalStyles />
 }

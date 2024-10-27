@@ -1,77 +1,37 @@
+import { reviewData } from '@/common/data'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import React from 'react'
 import styled from 'styled-components'
 
-interface ReviewCardProps {
-  location: string
-  designer: string
-  review: string
-}
-
 const ReviewSection = () => {
-  const reviews: ReviewCardProps[] = [
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    },
-    {
-      location: '청담',
-      designer: '이** 디자이너 | 5년차',
-      review:
-        '미몽 덕분에 제 포트폴리오 이력이 더 발전할 수 있게 되었어요. 모델을 구하는 것이 정말 어려웠는데, 미몽으로 손쉽게 모델을 찾을 수 있었고, 그 결과물도 너무 만족스러웠어요.'
-    }
-    // 나머지 7개의 리뷰 데이터를 추가해주세요.
-  ]
-
+  const isMobile = useIsMobile()
   return (
     <StyledReviewSection>
       <Title>미몽 실 사용자들의 리뷰</Title>
-      <Description>미몽은 헤어디자이너들의 고민과 커리어를 위해 고민합니다.</Description>
+      {isMobile ? (
+        <>
+          <Description>미몽은 헤어디자이너들의</Description>
+          <Description>고민과 커리어를 위해 고민합니다.</Description>
+        </>
+      ) : (
+        <Description>미몽은 헤어디자이너들의 고민과 커리어를 위해 고민합니다.</Description>
+      )}
       <ReviewGrid>
-        {reviews.map((review, index) => (
-          <ReviewCard key={index}>
-            <Location>{review.location}</Location>
-            <Designer>{review.designer}</Designer>
-            <Review>{review.review}</Review>
-          </ReviewCard>
-        ))}
+        {isMobile
+          ? reviewData.slice(0, 4).map((review, index) => (
+              <ReviewCard key={index}>
+                <Location>{review.location}</Location>
+                <Designer>{review.designer}</Designer>
+                <Review>{review.review}</Review>
+              </ReviewCard>
+            ))
+          : reviewData.map((review, index) => (
+              <ReviewCard key={index}>
+                <Location>{review.location}</Location>
+                <Designer>{review.designer}</Designer>
+                <Review>{review.review}</Review>
+              </ReviewCard>
+            ))}
       </ReviewGrid>
     </StyledReviewSection>
   )
@@ -87,13 +47,19 @@ const StyledReviewSection = styled.section`
 const Title = styled.h2`
   color: #8276f5;
   font-size: 32px;
-  margin-bottom: 16px;
+  margin-bottom: 1.2rem;
 `
 
 const Description = styled.p`
   color: #8276f5;
   font-size: 18px;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+  }
 `
 
 const ReviewGrid = styled.div`
@@ -109,8 +75,9 @@ const ReviewGrid = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    margin-top: 2rem;
   }
 `
 
@@ -123,21 +90,39 @@ const ReviewCard = styled.div`
   align-items: flex-start;
   text-align: left;
   box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    width: 342px;
+    height: auto;
+  }
 `
 
 const Location = styled.p`
   font-weight: normal;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `
 
 const Designer = styled.p`
   font-weight: bold;
   color: #000;
   margin-bottom: 12px;
+
+  @media (max-width: 768px) {
+    margin-top: 0.2rem;
+    font-size: 1.5rem;
+  }
 `
 
 const Review = styled.p`
   font-size: 14px;
   line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `
 
 export default ReviewSection
