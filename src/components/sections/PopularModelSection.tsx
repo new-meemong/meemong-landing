@@ -5,7 +5,6 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 import { CarouselWrapper } from '@/styles/CommonStyles'
 import Slider from 'react-slick'
 import { theme } from '@/constants/theme'
-import { IMAGES } from '@/constants/images'
 
 const carouselSettings = {
   dots: true,
@@ -17,25 +16,37 @@ const carouselSettings = {
   autoplaySpeed: 3000
 }
 
-const names = ['조** 모델', '김** 모델', '이** ', '박** 모델']
+interface PopularModelSectionProps {
+  names: string[]
+  images: string[]
+  descriptions: string[]
+  backgroundColor?: string
+  isDesigner?: boolean
+}
 
-const PopularModelSection = () => {
+const PopularModelSection = ({
+  names,
+  images,
+  descriptions,
+  backgroundColor,
+  isDesigner = true
+}: PopularModelSectionProps) => {
   const isMobile = useIsMobile()
 
   return (
-    <StyledPopularModel>
+    <StyledPopularModel $backgroundColor={backgroundColor}>
       <ContentWrapper>
         <ImageContainer>
           {isMobile ? (
             <CarouselWrapper $dotcolor={theme.colors.white}>
               <Slider {...carouselSettings}>
-                {IMAGES.DESIGNER.POPULAR_MODEL.map((image, index) => (
+                {images?.map((image, index) => (
                   <div key={index}>
                     <ModelWrapper>
                       <ModelImage src={image} alt={`Favorite Model ${index + 1}`} width={260} height={390} />
                       <ModelInfo>
                         <ModelName>{names[index]}</ModelName>
-                        <ModelDescription>무료 모델 | 이번달 인기</ModelDescription>
+                        <ModelDescription>{descriptions[index]}</ModelDescription>
                       </ModelInfo>
                     </ModelWrapper>
                   </div>
@@ -43,12 +54,12 @@ const PopularModelSection = () => {
               </Slider>
             </CarouselWrapper>
           ) : (
-            IMAGES.DESIGNER.POPULAR_MODEL.map((src, index) => (
+            images?.map((src, index) => (
               <ModelWrapper key={index}>
                 <ModelImage src={src} alt={`Favorite Model ${index + 1}`} width={200} height={300} />
                 <ModelInfo>
                   <ModelName>{names[index]}</ModelName>
-                  <ModelDescription>무료 모델 | 이번달 인기</ModelDescription>
+                  <ModelDescription>{descriptions[index]}</ModelDescription>
                 </ModelInfo>
               </ModelWrapper>
             ))
@@ -60,7 +71,7 @@ const PopularModelSection = () => {
             <PopularText>인기 있는 모델 보러가기</PopularText>
           </>
         ) : (
-          <PopularText>이번 달 가장 인기 있는 모델 보러가기</PopularText>
+          <PopularText>이번 달 가장 인기 있는 {isDesigner ? '모델' : '디자이너'} 보러가기</PopularText>
         )}
         <ButtonGroup>
           <LinkButton
@@ -68,7 +79,7 @@ const PopularModelSection = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="/assets/images/google-play.svg" alt="Google Play" width={200} height={60} />
+            <Image src="/icons/google-play.svg" alt="Google Play" width={200} height={60} />
           </LinkButton>
           <LinkButton
             href="https://apps.apple.com/kr/app/미몽-당신도-헤어모델/id1572588554"
@@ -85,8 +96,8 @@ const PopularModelSection = () => {
 
 export default PopularModelSection
 
-const StyledPopularModel = styled.div`
-  background-color: #8276f5;
+const StyledPopularModel = styled.div<{ $backgroundColor?: string }>`
+  background-color: ${({ $backgroundColor }) => $backgroundColor || '#8276f5'};
   padding: 80px 0;
   display: flex;
   justify-content: center;
@@ -154,10 +165,10 @@ const ModelName = styled.p`
   line-height: 1.2;
 `
 
-const ModelDescription = styled.p`
-  color: #ccc;
-  font-size: 16px;
-  font-weight: bold;
+const ModelDescription = styled.p<{ $isDesigner?: boolean }>`
+  color: ${({ $isDesigner }) => ($isDesigner ? '#CCC' : '#fff')};
+  font-size: ${({ $isDesigner }) => ($isDesigner ? '16px' : '14px')};
+  font-weight: ${({ $isDesigner }) => ($isDesigner ? 'bold' : 'normal')};
 `
 
 const PopularText = styled.p`

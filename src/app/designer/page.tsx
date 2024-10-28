@@ -6,8 +6,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import CountDataSection from '@/components/sections/CountDataSection'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import NavigationWebContents from '@/components/navigation/NavigationWebContents'
-import NavigationMobileContents from '@/components/navigation/NavigationMobileContents'
+import NavigationWebContents from '@/components/navigation/designer/NavigationWebContents'
+import NavigationMobileContents from '@/components/navigation/designer/NavigationMobileContents'
 import PopularModelSection from '@/components/sections/PopularModelSection'
 import ReviewSection from '@/components/sections/ReviewSection'
 import PlanSection from '@/components/sections/PlanSection'
@@ -15,8 +15,11 @@ import FooterSection from '@/components/common/FooterSection'
 import FloatingButtons from '@/components/common/FloatingButtons'
 import { IMAGES } from '@/constants/images'
 import Loading from '@/components/common/Loading'
+import { useRouter } from 'next/navigation'
+import { DESIGNER_PLAN_DATA, DESIGNER_REVIEW_DATA } from '@/constants/data'
 
-export default function DesignerWeb() {
+export default function Designer() {
+  const router = useRouter()
   const [activeSection, setActiveSection] = useState('헤어모델 매칭')
   const navItems = ['헤어모델 매칭', '구인구직', '스페어', '교육']
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
@@ -56,6 +59,10 @@ export default function DesignerWeb() {
     }
   }
 
+  const onClickModelPage = () => {
+    router.push('/model')
+  }
+
   if (isMobile === null) {
     return <Loading />
   }
@@ -69,7 +76,7 @@ export default function DesignerWeb() {
             <Image style={{ marginTop: 5 }} src="/icons/logo-web.svg" alt="logo" width={30} height={30} />
             <span>미몽 MEEMONG</span>
           </LogoBox>
-          <Button>
+          <Button onClick={onClickModelPage}>
             <span>헤어모델 페이지 가기</span>
             <Image width={9} height={12} src={'/icons/chevron/right-chevron.svg'} alt="arrow" />
           </Button>
@@ -127,7 +134,7 @@ export default function DesignerWeb() {
               />
             </LinkButton>
           </ButtonGroup>
-          <ModelPageButton>
+          <ModelPageButton onClick={onClickModelPage}>
             <span>헤어모델 전용 페이지 가기</span>
             <Image width={9} height={12} src="/icons/chevron/right-chevron.svg" alt="arrow" />
           </ModelPageButton>
@@ -154,13 +161,22 @@ export default function DesignerWeb() {
       )}
 
       {/* 인기있는모델 섹션 */}
-      <PopularModelSection />
+      <PopularModelSection
+        names={['조** 모델', '김** 모델', '이** ', '박** 모델']}
+        descriptions={[
+          '무료 모델 | 이번달 인기',
+          '무료 모델 | 이번달 인기',
+          '무료 모델 | 이번달 인기',
+          '무료 모델 | 이번달 인기'
+        ]}
+        images={IMAGES.DESIGNER.POPULAR_MODEL}
+      />
 
       {/* 리뷰 섹션 */}
-      <ReviewSection />
+      <ReviewSection reviewData={DESIGNER_REVIEW_DATA} />
 
       {/* 플랜안내 섹션 */}
-      <PlanSection />
+      <PlanSection planData={DESIGNER_PLAN_DATA} />
 
       {/* Footer 섹션 */}
       <FooterSection />
@@ -268,16 +284,18 @@ const ButtonGroup = styled.div`
 `
 
 const ModelPageButton = styled(Button)`
-  font-size: 1.2rem;
+  font-size: clamp(24px, 2vw, 33px);
   width: 396px;
   height: 60px;
   background-color: white;
   color: black;
   margin-top: 2rem;
+  font-weight: 700;
 
   @media (max-width: 768px) {
     width: 263px;
     height: 44px;
+    font-size: 1.2rem;
   }
 `
 

@@ -8,7 +8,14 @@ const colors = {
   gray: '#80888A',
   gray100: '#D2D8D9',
   gray200: '#9A9A9A',
-  gray300: '#c8c8c8'
+  gray300: '#c8c8c8',
+  gray400: '#d9d9d9',
+  gray500: '#C8D3E1',
+  teal: '#19A1C4',
+  teal100: '#CEE',
+  team200: '#00ACAC',
+  team300: '#1584A0',
+  black: '#000000'
 }
 
 export const theme = {

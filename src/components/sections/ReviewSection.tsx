@@ -1,34 +1,39 @@
-import { reviewData } from '@/constants/data'
+import { ReviewDataType } from '@/constants/data'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import React from 'react'
 import styled from 'styled-components'
 
-const ReviewSection = () => {
+interface ReviewSectionProps {
+  reviewData: ReviewDataType[]
+  color?: string
+}
+
+const ReviewSection = ({ reviewData, color }: ReviewSectionProps) => {
   const isMobile = useIsMobile()
   return (
     <StyledReviewSection>
-      <Title>미몽 실 사용자들의 리뷰</Title>
+      <Title $color={color}>미몽 실 사용자들의 리뷰</Title>
       {isMobile ? (
         <>
-          <Description>미몽은 헤어디자이너들의</Description>
-          <Description>고민과 커리어를 위해 고민합니다.</Description>
+          <Description $color={color}>미몽은 헤어디자이너들의</Description>
+          <Description $color={color}>고민과 커리어를 위해 고민합니다.</Description>
         </>
       ) : (
-        <Description>미몽은 헤어디자이너들의 고민과 커리어를 위해 고민합니다.</Description>
+        <Description $color={color}>미몽은 헤어디자이너들의 고민과 커리어를 위해 고민합니다.</Description>
       )}
       <ReviewGrid>
         {isMobile
-          ? reviewData.slice(0, 4).map((review, index) => (
+          ? reviewData?.slice(0, 4).map((review, index) => (
               <ReviewCard key={index}>
-                <Location>{review.location}</Location>
-                <Designer>{review.designer}</Designer>
+                <Location>{review.title}</Location>
+                <Designer>{review.description}</Designer>
                 <Review>{review.review}</Review>
               </ReviewCard>
             ))
-          : reviewData.map((review, index) => (
+          : reviewData?.map((review, index) => (
               <ReviewCard key={index}>
-                <Location>{review.location}</Location>
-                <Designer>{review.designer}</Designer>
+                <Location>{review.title}</Location>
+                <Designer>{review.description}</Designer>
                 <Review>{review.review}</Review>
               </ReviewCard>
             ))}
@@ -44,14 +49,14 @@ const StyledReviewSection = styled.section`
   margin: 0 auto;
 `
 
-const Title = styled.h2`
-  color: #8276f5;
+const Title = styled.h2<{ $color?: string }>`
+  color: ${({ $color }) => $color || '#8276f5'};
   font-size: 32px;
   margin-bottom: 1.2rem;
 `
 
-const Description = styled.p`
-  color: #8276f5;
+const Description = styled.p<{ $color?: string }>`
+  color: ${({ $color }) => $color || '#8276f5'};
   font-size: 18px;
   margin-bottom: 40px;
 

@@ -1,31 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { planData } from '@/constants/data'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import { theme } from '@/constants/theme'
+import { PlanDataType } from '@/constants/data'
 
-const PlanSection = () => {
+interface PlanSectionProps {
+  planData: PlanDataType[]
+  isDesigner?: boolean
+}
+
+const PlanSection = ({ planData, isDesigner = true }: PlanSectionProps) => {
   const isMobile = useIsMobile()
   return (
     <StyledPlanSection>
       <CoinIcon src="/icons/coin.png" alt="Coin Icon" width={80} height={80} />
-      <Description>미몽은 지금 앱 스토어에서 설치 가능합니다.</Description>
+      <Description $isDesigner={isDesigner}>미몽은 지금 앱 스토어에서 설치 가능합니다.</Description>
 
       {isMobile ? (
         <>
-          <Title>헤어디자이너라면 지금</Title>
-          <Title>무료로 시작하세요.</Title>
+          <Title $isDesigner={isDesigner}>헤어디자이너라면 지금</Title>
+          <Title $isDesigner={isDesigner}>무료로 시작하세요.</Title>
         </>
       ) : (
-        <Title>헤어디자이너라면 지금 무료로 시작하세요.</Title>
+        <Title $isDesigner={isDesigner}>헤어디자이너라면 지금 무료로 시작하세요.</Title>
       )}
       <PlanCardContainer>
-        {planData.map((plan, index) => (
+        {planData?.map((plan, index) => (
           <PlanCard key={index} disabled={plan.disabled}>
             <PlanCardInner>
               <CardIcon src={plan.icon} alt={`${plan.title} Icon`} width={40} height={40} />
-              <CardTitle>{plan.title}</CardTitle>
+              <CardTitle $isDesigner={isDesigner}>{plan.title}</CardTitle>
               <CardDescription>{plan.description}</CardDescription>
               <DetailList>
                 {plan.details.map((detail, detailIndex) => (
@@ -65,9 +70,9 @@ const CoinIcon = styled(Image)`
   }
 `
 
-const Description = styled.p`
+const Description = styled.p<{ $isDesigner?: boolean }>`
   font-size: clamp(22px, 1.5vw, 30px);
-  color: #8276f5;
+  color: ${({ $isDesigner }) => ($isDesigner ? theme.colors.primary : theme.colors.teal)};
   margin-bottom: 10px;
   font-weight: 700;
 
@@ -77,9 +82,9 @@ const Description = styled.p`
   }
 `
 
-const Title = styled.h2`
+const Title = styled.h2<{ $isDesigner?: boolean }>`
   font-size: clamp(40px, 2.5vw, 60px);
-  color: #8276f5;
+  color: ${({ $isDesigner }) => ($isDesigner ? theme.colors.primary : theme.colors.teal)};
   margin-bottom: 40px;
 
   @media (max-width: 768px) {
@@ -103,7 +108,7 @@ const PlanCardContainer = styled.div`
   }
 `
 
-const PlanCard = styled.div<{ disabled: boolean }>`
+const PlanCard = styled.div<{ disabled: boolean; $isDesigner?: boolean }>`
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -111,7 +116,7 @@ const PlanCard = styled.div<{ disabled: boolean }>`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   transition: opacity 0.3s ease;
-  border: 5px solid ${theme.colors.primary};
+  border: 5px solid ${({ $isDesigner }) => ($isDesigner ? theme.colors.primary : theme.colors.teal)};
 `
 
 const PlanCardInner = styled.div`
@@ -132,10 +137,10 @@ const CardIcon = styled(Image)`
   margin-bottom: 15px;
 `
 
-const CardTitle = styled.h3`
+const CardTitle = styled.h3<{ $isDesigner?: boolean }>`
   font-size: 30px;
   font-weight: bold;
-  color: #8276f5;
+  color: ${({ $isDesigner }) => ($isDesigner ? theme.colors.primary : theme.colors.teal)};
   line-height: 1.2;
 `
 
@@ -154,6 +159,7 @@ const DetailList = styled.ul`
   align-items: flex-start;
   list-style-type: none;
   padding: 0;
+  white-space: nowrap;
 `
 
 const DetailItem = styled.li`

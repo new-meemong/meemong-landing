@@ -11,10 +11,12 @@ interface CommonContentProps {
   description1: string
   description2: string
   images: string[]
+  title1Color?: string
   title2Color?: string
   backgroundColor?: string
   ImageContainerStyle?: React.CSSProperties
   carouselDotColor?: string
+  annotation?: string
 }
 
 const settings = {
@@ -33,14 +35,16 @@ const CommonContent = ({
   description1,
   description2,
   images,
+  title1Color,
   title2Color,
   backgroundColor,
   ImageContainerStyle,
-  carouselDotColor
+  carouselDotColor,
+  annotation
 }: CommonContentProps) => {
   const isMobile = useIsMobile()
   return (
-    <StyledCommonContent $title2Color={title2Color} $backgroundColor={backgroundColor}>
+    <StyledCommonContent $title2Color={title2Color} $title1Color={title1Color} $backgroundColor={backgroundColor}>
       <div className="title-container">
         <h1>
           {title1.split('\\n').map((line, index) => (
@@ -77,6 +81,7 @@ const CommonContent = ({
           ))}
         </p>
       </div>
+      {annotation && <p className="annotation">{annotation}</p>}
       {isMobile ? (
         <CarouselWrapper $dotcolor={carouselDotColor || theme.colors.gray}>
           <Slider {...settings}>
@@ -98,7 +103,7 @@ const CommonContent = ({
   )
 }
 
-const StyledCommonContent = styled.div<{ $title2Color?: string; $backgroundColor?: string }>`
+const StyledCommonContent = styled.div<{ $title2Color?: string; $title1Color?: string; $backgroundColor?: string }>`
   display: flex;
   margin: 0 auto;
   width: 100%;
@@ -106,6 +111,7 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $backgroundColor
   align-items: center;
   padding: 100px 10% 0;
   text-align: center;
+
   background-color: ${(props) => props.$backgroundColor || 'transparent'};
 
   @media (max-width: 768px) {
@@ -120,7 +126,8 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $backgroundColor
 
   h1 {
     font-size: clamp(40px, 3vw, 60px);
-    color: #303535;
+    color: ${(props) => props.$title1Color || '#303535'};
+    margin-bottom: 0.7rem;
 
     @media (max-width: 768px) {
       font-size: 2rem;
@@ -144,7 +151,7 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $backgroundColor
 
   .description {
     font-size: clamp(20px, 1.5vw, 24px);
-    color: #666;
+    color: ${theme.colors.gray200};
 
     p {
       margin: 0;
@@ -162,6 +169,12 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $backgroundColor
         margin-bottom: 0.5rem;
       }
     }
+  }
+
+  .annotation {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: ${theme.colors.gray200};
   }
 
   .image-container {

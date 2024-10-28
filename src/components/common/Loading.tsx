@@ -45,5 +45,5 @@ const LogoWrapper = styled.div`
 
 const StyledImage = styled(Image)`
   transform-origin: center center;
-  animation: ${rotate} 1.5s linear infinite;
+  animation: ${rotate} 1s linear infinite;
 `
