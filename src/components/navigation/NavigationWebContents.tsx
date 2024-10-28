@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import CommonContent from '../common/CommonContent'
-import { theme } from '@/common/theme'
+import { theme } from '@/constants/theme'
+import { IMAGES } from '@/constants/images'
 
 interface NavigationWebContentsProps {
   navItems: string[]
@@ -37,7 +38,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                     <FeatureList>
                       <FeatureItem>
                         <IconWrapper>
-                          <MultiCircleIcon src="/assets/images/hairmodel/parts/multi-circle.svg" alt="Feature1" />
+                          <MultiCircleIcon src="/icons/multi-circle.svg" alt="Feature1" />
                         </IconWrapper>
                         <FeatureContent>
                           <FeatureTitle>5분만에 원하는 모델 찾기</FeatureTitle>
@@ -50,7 +51,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                       </FeatureItem>
                       <FeatureItem>
                         <IconWrapper>
-                          <CircleIcon src="/assets/images/hairmodel/parts/circle.svg" alt="Feature2" />
+                          <CircleIcon src="/icons/circle.svg" alt="Feature2" />
                         </IconWrapper>
                         <FeatureContent>
                           <FeatureTitle>즉시 채팅으로 시술 제안</FeatureTitle>
@@ -63,7 +64,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                       </FeatureItem>
                       <FeatureItem>
                         <IconWrapper>
-                          <CircleIcon src="/assets/images/hairmodel/parts/circle.svg" alt="Feature3" />
+                          <CircleIcon src="/icons/circle.svg" alt="Feature3" />
                         </IconWrapper>
                         <FeatureContent>
                           <FeatureTitle>앱에서 바로 초상권 계약</FeatureTitle>
@@ -78,9 +79,9 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <FindHairModelPhoneImage src="/assets/images/hairmodel/find-hairmodel-web1.png" alt="Hair Model 1" />
-                  <FindHairModelPhoneImage src="/assets/images/hairmodel/find-hairmodel-web2.png" alt="Hair Model 2" />
-                  <FindHairModelPhoneImage src="/assets/images/hairmodel/find-hairmodel-web3.png" alt="Hair Model 3" />
+                  <FindHairModelPhoneImage src={IMAGES.DESIGNER.HAIR_MODEL.WEB[0]} alt="Hair Model 1" />
+                  <FindHairModelPhoneImage src={IMAGES.DESIGNER.HAIR_MODEL.WEB[1]} alt="Hair Model 2" />
+                  <FindHairModelPhoneImage src={IMAGES.DESIGNER.HAIR_MODEL.WEB[2]} alt="Hair Model 3" />
                 </ImageArea>
               </MatchingContent>
               <ThunderMatchingContent style={{ padding: '10% 10% 0 10%' }}>
@@ -101,16 +102,8 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <PhoneImage
-                    width="50%"
-                    src="/assets/images/hairmodel/thunder-matching-web1.png"
-                    alt="Thunder Matching 1"
-                  />
-                  <PhoneImage
-                    width="50%"
-                    src="/assets/images/hairmodel/thunder-matching-web2.png"
-                    alt="Thunder Matching 2"
-                  />
+                  <PhoneImage width="50%" src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[0]} alt="Thunder Matching 1" />
+                  <PhoneImage width="50%" src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[1]} alt="Thunder Matching 2" />
                 </ImageArea>
               </ThunderMatchingContent>
             </ContentSection>
@@ -121,7 +114,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2="면접 보는 시간도\n아끼세요"
                 description1="미몽 앱 안에서 원하는 매장으로"
                 description2="바로바로 이력서를 전송하세요."
-                images={['/assets/images/recruit/recruit1.png', '/assets/images/recruit/recruit2.png']}
+                images={IMAGES.DESIGNER.RECRUIT.WEB.slice(0, 2)}
                 title2Color={theme.colors.primary}
                 ImageContainerStyle={{
                   marginTop: '50px'
@@ -132,7 +125,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2="내가 원하는 매장만 즉시 찾기"
                 description1="미용인의 눈높이에 맞춘 상세한 필터 덕분에"
                 description2="원하는 매장을 즉시 찾을 수 있어요!"
-                images={['/assets/images/recruit/recruit3.png', '/assets/images/recruit/recruit4.png']}
+                images={IMAGES.DESIGNER.RECRUIT.WEB.slice(2, 4)}
                 title2Color={theme.colors.primary}
                 backgroundColor="#F8F7FF"
               />
@@ -141,7 +134,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2="내 주변 가까운 매장만 바로찾기"
                 description1="위치 기준으로 근처 매장도"
                 description2="빠르게 찾고 지원할 수 있어요!"
-                images={['/assets/images/recruit/recruit5.png', '/assets/images/recruit/recruit6.png']}
+                images={IMAGES.DESIGNER.RECRUIT.WEB.slice(4, 6)}
                 title2Color={theme.colors.primary}
               />
               <CommonContent
@@ -149,7 +142,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2="중요한 면접 일정 알림 받기"
                 description1="바쁜 일정에도 중요한 면접 날짜를 잊지 않도록"
                 description2="카카오톡 및 앱 푸시 알림으로 안내해 드려요!"
-                images={['/assets/images/recruit/recruit7.png', '/assets/images/recruit/recruit8.png']}
+                images={IMAGES.DESIGNER.RECRUIT.WEB.slice(6, 8)}
                 title2Color={theme.colors.primary}
                 backgroundColor="#F8F7FF"
               />
@@ -161,7 +154,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2="잠깐 필요한 스페어구인도 바로"
                 description1="성수기에 피한 스페어 구인"
                 description2="바로 올리고 바로 구하세요!"
-                images={['/assets/images/spare/spare1.png', '/assets/images/spare/spare2.png']}
+                images={IMAGES.DESIGNER.SPARE.WEB.slice(0, 2)}
                 title2Color={theme.colors.primary}
               />
             </ContentSection>
@@ -172,7 +165,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2="새로운 헤어트렌드와 기술 학습"
                 description1="미용 아카데미 '캐미티드'와의 제휴 할인 기회를 제공"
                 description2=""
-                images={['/assets/images/education/education1.png', '/assets/images/education/education2.png']}
+                images={IMAGES.DESIGNER.EDUCATION.WEB.slice(0, 2)}
                 title2Color={theme.colors.primary}
               />
             </ContentSection>
@@ -258,7 +251,7 @@ const FeatureList = styled.div`
     bottom: 28px;
     width: 1px;
     height: 300px;
-    background-image: url('/assets/images/hairmodel/parts/vertical-line.svg');
+    background-image: url('/icons/vertical-line.svg');
   }
 `
 

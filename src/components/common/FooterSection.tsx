@@ -44,15 +44,15 @@ const FooterSection = () => {
             <Links>
               <LinkButton href="/faq">
                 <span>FAQ</span>
-                <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
+                <Image src="/icons/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
               </LinkButton>
               <LinkButton href="/inquiry">
                 <span>1:1문의</span>
-                <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
+                <Image src="/icons/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
               </LinkButton>
               <LinkButton href="/notice">
                 <span>공지사항</span>
-                <Image src="/assets/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
+                <Image src="/icons/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
               </LinkButton>
             </Links>
           )}
@@ -83,7 +83,7 @@ const FooterSection = () => {
             <CompanyInfo>
               <CompanyDetails>
                 <span>미몽컴퍼니</span>
-                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
                 <span className="address">주소 서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
               </CompanyDetails>
               <CompanyDetails>
@@ -93,7 +93,7 @@ const FooterSection = () => {
               <CompanyDetails>
                 <span className="label">사업자 등록번호</span>
                 <span>370-87-02039</span>
-                <Link href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=3708702039">
+                <Link href="">
                   <span style={{ color: '#1252F4' }}>사업자정보확인</span>
                 </Link>
               </CompanyDetails>
@@ -104,11 +104,11 @@ const FooterSection = () => {
               <Copyright>COPYRIGHT ©2022 MEEMONG COMPANY ALL RIGHTS RESERVED.</Copyright>
             </CompanyInfo>
             <SocialLinks>
-              <Link href="https://www.instagram.com/meemong_official" target="_blank" rel="noopener noreferrer">
-                <Image src="/assets/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+              <Link href="" target="_blank" rel="noopener noreferrer">
+                <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} />
               </Link>
               {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
-                <Image src="/assets/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
+                <Image src="/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
               </Link> */}
             </SocialLinks>
           </>
@@ -118,36 +118,36 @@ const FooterSection = () => {
             <CompanyInfo>
               <Links>
                 <Link href="/terms">서비스 이용약관</Link>
-                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
                 <Link href="/privacy">개인정보 보호 및 처리방침</Link>
               </Links>
               <CompanyDetails>
                 미몽컴퍼니
-                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
                 <span className="label">주소</span>
                 <span className="value">서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
-                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
                 <span className="label">대표이사</span>
                 <span>유주호</span>
               </CompanyDetails>
               <CompanyDetails>
                 <span className="label">사업자 등록번호</span>
                 <span>370-87-02039</span>
-                <Link href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=3708702039">
+                <Link href="">
                   <span style={{ color: '#1252F4' }}>사업자정보확인</span>
                 </Link>
-                <Image src="/assets/common/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
                 <span className="label">개인정보관리 책임자</span>
                 <span>장혜진</span>
               </CompanyDetails>
               <Copyright>COPYRIGHT ©2022 meemong Company All Rights Reserved.</Copyright>
             </CompanyInfo>
             <SocialLinks>
-              <Link href="https://www.instagram.com/meemong_official/" target="_blank" rel="noopener noreferrer">
-                <Image src="/assets/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+              <Link href="" target="_blank" rel="noopener noreferrer">
+                <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} />
               </Link>
               {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
-                <Image src="/assets/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
+                <Image src="/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
               </Link> */}
             </SocialLinks>
           </>

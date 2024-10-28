@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { theme } from '@/common/theme'
+import { theme } from '@/constants/theme'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 import { CarouselWrapper } from '@/styles/CommonStyles'

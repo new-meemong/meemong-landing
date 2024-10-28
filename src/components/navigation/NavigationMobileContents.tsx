@@ -3,18 +3,11 @@ import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { theme } from '@/common/theme'
+import { theme } from '@/constants/theme'
 import CommonContent from '../common/CommonContent'
-import {
-  EducationMobileImages,
-  HairModelMobileImages,
-  RecruitMobileImagesFirst,
-  RecruitMobileImagesSecond,
-  RecruitMobileImagesThird,
-  SpareMobileImages,
-  ThunderMatchingMobileImages
-} from '@/common/images'
+
 import { CarouselWrapper } from '@/styles/CommonStyles'
+import { IMAGES } from '@/constants/images'
 
 interface NavigationMobileContentsProps {
   navItems: string[]
@@ -51,7 +44,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 <h1>빠르고 안전한 모델 찾기</h1>
                 <CarouselWrapper>
                   <Slider {...carouselSettings}>
-                    {HairModelMobileImages.map((image, index) => (
+                    {IMAGES.DESIGNER.HAIR_MODEL.MOBILE.map((image, index) => (
                       <div key={index}>
                         <img src={image} alt={`Hair model ${index + 1}`} />
                       </div>
@@ -64,7 +57,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
               <FeatureList>
                 <FeatureItem>
                   <IconWrapper>
-                    <MultiCircleIcon src="/assets/images/hairmodel/parts/multi-circle.svg" alt="Feature1" />
+                    <MultiCircleIcon src="/icons/multi-circle.svg" alt="Feature1" />
                   </IconWrapper>
                   <FeatureContent>
                     <FeatureTitle>5분만에 원하는 모델 찾기</FeatureTitle>
@@ -75,7 +68,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 </FeatureItem>
                 <FeatureItem>
                   <IconWrapper>
-                    <CircleIcon src="/assets/images/hairmodel/parts/circle.svg" alt="Feature2" />
+                    <CircleIcon src="/icons/circle.svg" alt="Feature2" />
                   </IconWrapper>
                   <FeatureContent>
                     <FeatureTitle>즉시 채팅으로 시술 제안</FeatureTitle>
@@ -86,7 +79,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 </FeatureItem>
                 <FeatureItem>
                   <IconWrapper>
-                    <CircleIcon src="/assets/images/hairmodel/parts/circle.svg" alt="Feature3" />
+                    <CircleIcon src="/icons/circle.svg" alt="Feature3" />
                   </IconWrapper>
                   <FeatureContent>
                     <FeatureTitle>앱에서 바로 초상권 계약</FeatureTitle>
@@ -110,7 +103,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 </DescriptionBox>
                 <CarouselWrapper $dotcolor={theme.colors.white}>
                   <Slider {...carouselSettings}>
-                    {ThunderMatchingMobileImages.map((image, index) => (
+                    {IMAGES.DESIGNER.THUNDER_MATCHING.MOBILE.map((image, index) => (
                       <div key={index}>
                         <img src={image} alt={`Hair model ${index + 1}`} />
                       </div>
@@ -127,7 +120,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 title2Color={theme.colors.primary}
                 description1="미몽 앱 안에서 원하는 매장으로"
                 description2="바로바로 이력서를 전송하세요."
-                images={RecruitMobileImagesFirst}
+                images={IMAGES.DESIGNER.RECRUIT.MOBILE.slice(0, 2)}
                 backgroundColor={theme.colors.violet100}
               />
               <CommonContent
@@ -136,7 +129,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 title2Color={theme.colors.primary}
                 description1="미용인의 눈높이에 맞춘"
                 description2="상세한 필터 덕분에 \n 원하는 매장을 즉시 찾을 수 있어요!"
-                images={RecruitMobileImagesSecond}
+                images={IMAGES.DESIGNER.RECRUIT.MOBILE.slice(2, 4)}
                 backgroundColor={theme.colors.violet100}
               />
               <CommonContent
@@ -145,7 +138,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 title2Color={theme.colors.primary}
                 description1="위치 기준으로 근처 매장도"
                 description2="빠르게 찾고 지원할 수 있어요!"
-                images={RecruitMobileImagesThird}
+                images={IMAGES.DESIGNER.RECRUIT.MOBILE.slice(4, 6)}
               />
               <CommonContent
                 title1="구인구직은 미몽으로"
@@ -153,7 +146,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 title2Color={theme.colors.primary}
                 description1="바쁜 일정에도 중요한 \n 면접 날짜를 잊지 않도록"
                 description2="카카오톡 및 앱 푸시 알림으로 \n 안내해 드려요!"
-                images={RecruitMobileImagesThird}
+                images={IMAGES.DESIGNER.RECRUIT.MOBILE.slice(6, 8)}
               />
             </FeatureSection>
           ) : item === '스페어' ? (
@@ -164,7 +157,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 title2Color={theme.colors.primary}
                 description1="성수기에 필요한 스페어 구인"
                 description2="바로 올리고 바로 구하세요!"
-                images={SpareMobileImages}
+                images={IMAGES.DESIGNER.SPARE.MOBILE}
               />
             </FeatureSection>
           ) : item === '교육' ? (
@@ -175,7 +168,7 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 title2Color={theme.colors.primary}
                 description1="미용 아카데미 '캐미티드'와의"
                 description2="제휴 할인 기회를 제공"
-                images={EducationMobileImages}
+                images={IMAGES.DESIGNER.EDUCATION.MOBILE}
               />
             </FeatureSection>
           ) : (
@@ -228,7 +221,7 @@ const FeatureList = styled.div`
     bottom: 28px;
     width: 1px;
     height: 250px;
-    background-image: url('/assets/images/hairmodel/parts/vertical-line.svg');
+    background-image: url('/icons/vertical-line.svg');
   }
 `
 
@@ -290,7 +283,5 @@ const Description = styled.p`
   font-weight: 400;
   line-height: 1.7;
 `
-
-const ContentSection = styled.div``
 
 export default NavigationMobileContents

@@ -1,4 +1,4 @@
-import { theme } from '@/common/theme'
+import { theme } from '@/constants/theme'
 import styled from 'styled-components'
 
 const Container = styled.div`

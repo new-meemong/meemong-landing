@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 
-export const useIsMobile = (breakpoint = 768) => {
-  const [isMobile, setIsMobile] = useState(false)
+export const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null) // null은 초기 로딩 상태를 나타냅니다
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < breakpoint)
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
     }
 
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [breakpoint])
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
 
   return isMobile
 }

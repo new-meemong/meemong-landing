@@ -4,23 +4,22 @@ import { Button } from '@/styles/CommonStyles'
 import Image from 'next/image'
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import CountDataSection from '@/components/CountDataSection'
+import CountDataSection from '@/components/sections/CountDataSection'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import NavigationContentsWeb from '@/components/navigation/NavigationWebContents'
 import NavigationWebContents from '@/components/navigation/NavigationWebContents'
 import NavigationMobileContents from '@/components/navigation/NavigationMobileContents'
-import FavoriteModelSection from '@/components/PopularModelSection'
-import PopularModelSection from '@/components/PopularModelSection'
-import { PopularModelImages } from '@/common/images'
-import ReviewSection from '@/components/ReviewSection'
-import PlanSection from '@/components/PlanSection'
+import PopularModelSection from '@/components/sections/PopularModelSection'
+import ReviewSection from '@/components/sections/ReviewSection'
+import PlanSection from '@/components/sections/PlanSection'
 import FooterSection from '@/components/common/FooterSection'
+import FloatingButtons from '@/components/common/FloatingButtons'
+import { IMAGES } from '@/constants/images'
+import Loading from '@/components/common/Loading'
 
 export default function DesignerWeb() {
   const [activeSection, setActiveSection] = useState('헤어모델 매칭')
   const navItems = ['헤어모델 매칭', '구인구직', '스페어', '교육']
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-
   const isMobile = useIsMobile()
 
   useEffect(() => {
@@ -46,7 +45,7 @@ export default function DesignerWeb() {
   const scrollToSection = (section: string) => {
     const element = sectionRefs.current[section]
     if (element) {
-      const navHeight = 120 // Navigation height
+      const navHeight = 120
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - navHeight
 
@@ -57,18 +56,22 @@ export default function DesignerWeb() {
     }
   }
 
+  if (isMobile === null) {
+    return <Loading />
+  }
+
   return (
     <>
-      {/* Header */}
+      {/* 헤더 */}
       <Header>
         <HeaderInner>
           <LogoBox>
-            <Image style={{ marginTop: 5 }} src="/assets/logo/logo-web.svg" alt="logo" width={30} height={30} />
+            <Image style={{ marginTop: 5 }} src="/icons/logo-web.svg" alt="logo" width={30} height={30} />
             <span>미몽 MEEMONG</span>
           </LogoBox>
           <Button>
             <span>헤어모델 페이지 가기</span>
-            <Image width={9} height={12} src={'/assets/chevron/right-chevron.svg'} alt="arrow" />
+            <Image width={9} height={12} src={'/icons/chevron/right-chevron.svg'} alt="arrow" />
           </Button>
         </HeaderInner>
       </Header>
@@ -76,15 +79,18 @@ export default function DesignerWeb() {
       {/* 메인 커버 */}
       <MainCover>
         {isMobile ? (
-          <MobileCoverImage src="/assets/images/cover-m.png" alt="cover-m" />
+          <MobileCoverImage src={IMAGES.DESIGNER.COVER.MOBILE} alt="cover-m" />
         ) : (
           <Image
-            src={'/assets/images/cover.png'}
+            src={IMAGES.DESIGNER.COVER.WEB}
             alt="cover"
-            layout="responsive"
             width={1920}
             height={1080}
-            style={{ objectFit: 'cover' }}
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'cover'
+            }}
             priority
           />
         )}
@@ -102,7 +108,7 @@ export default function DesignerWeb() {
               rel="noopener noreferrer"
             >
               <Image
-                src="/assets/images/app-store.svg"
+                src="/icons/app-store.svg"
                 alt="app-store"
                 width={isMobile ? 120 : 200}
                 height={isMobile ? 38 : 60}
@@ -114,7 +120,7 @@ export default function DesignerWeb() {
               rel="noopener noreferrer"
             >
               <Image
-                src="/assets/images/google-play.svg"
+                src="/icons/google-play.svg"
                 alt="google-play"
                 width={isMobile ? 120 : 200}
                 height={isMobile ? 38 : 60}
@@ -123,12 +129,12 @@ export default function DesignerWeb() {
           </ButtonGroup>
           <ModelPageButton>
             <span>헤어모델 전용 페이지 가기</span>
-            <Image width={9} height={12} src="/assets/chevron/right-chevron.svg" alt="arrow" />
+            <Image width={9} height={12} src="/icons/chevron/right-chevron.svg" alt="arrow" />
           </ModelPageButton>
         </CoverContent>
       </MainCover>
 
-      {/* 데이터 영역 */}
+      {/* API 데이터 영역 */}
       <CountDataSection />
 
       {/* 네비게이션바 */}
@@ -148,7 +154,7 @@ export default function DesignerWeb() {
       )}
 
       {/* 인기있는모델 섹션 */}
-      <PopularModelSection images={PopularModelImages} names={['조** 모델', '김** 모델', '이** ', '박** 모델']} />
+      <PopularModelSection />
 
       {/* 리뷰 섹션 */}
       <ReviewSection />
@@ -158,6 +164,9 @@ export default function DesignerWeb() {
 
       {/* Footer 섹션 */}
       <FooterSection />
+
+      {/* 플로팅 버튼 영역 */}
+      <FloatingButtons />
     </>
   )
 }

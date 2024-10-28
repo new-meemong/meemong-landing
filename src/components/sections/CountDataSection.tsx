@@ -1,15 +1,15 @@
 'use client'
 
-import useContractCount from '@/hooks/useContractCount'
+import useContractCount from '@/hooks/apis/useContractCount'
 import useCountUp from '@/hooks/useCountUp'
-import useUserCount from '@/hooks/useUserCount'
+import useUserCount from '@/hooks/apis/useUserCount'
 import React from 'react'
 import styled from 'styled-components'
-import { SkeletonText } from './Skeleton'
+import { SkeletonText } from '../common/Skeleton'
 import dynamic from 'next/dynamic'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
-const DynamicDateDisplay = dynamic(() => import('./DateDisplay'), { ssr: false })
+const DynamicDateDisplay = dynamic(() => import('../common/DateDisplay'), { ssr: false })
 
 // 메인 컴포넌트
 const CountDataSection = () => {

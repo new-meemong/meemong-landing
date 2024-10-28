@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { planData } from '@/common/data'
+import { planData } from '@/constants/data'
 import { useIsMobile } from '@/hooks/useIsMobile'
-import { theme } from '@/common/theme'
+import { theme } from '@/constants/theme'
 
 const PlanSection = () => {
   const isMobile = useIsMobile()
   return (
     <StyledPlanSection>
-      <CoinIcon src="/assets/images/plan/coin.png" alt="Coin Icon" width={80} height={80} />
+      <CoinIcon src="/icons/coin.png" alt="Coin Icon" width={80} height={80} />
       <Description>미몽은 지금 앱 스토어에서 설치 가능합니다.</Description>
 
       {isMobile ? (

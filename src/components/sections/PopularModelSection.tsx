@@ -4,12 +4,8 @@ import Image from 'next/image'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import { CarouselWrapper } from '@/styles/CommonStyles'
 import Slider from 'react-slick'
-import { theme } from '@/common/theme'
-
-interface PopularModelSectionProps {
-  images: string[]
-  names: string[]
-}
+import { theme } from '@/constants/theme'
+import { IMAGES } from '@/constants/images'
 
 const carouselSettings = {
   dots: true,
@@ -21,7 +17,9 @@ const carouselSettings = {
   autoplaySpeed: 3000
 }
 
-const PopularModelSection = ({ images, names }: PopularModelSectionProps) => {
+const names = ['조** 모델', '김** 모델', '이** ', '박** 모델']
+
+const PopularModelSection = () => {
   const isMobile = useIsMobile()
 
   return (
@@ -31,7 +29,7 @@ const PopularModelSection = ({ images, names }: PopularModelSectionProps) => {
           {isMobile ? (
             <CarouselWrapper $dotcolor={theme.colors.white}>
               <Slider {...carouselSettings}>
-                {images.map((image, index) => (
+                {IMAGES.DESIGNER.POPULAR_MODEL.map((image, index) => (
                   <div key={index}>
                     <ModelWrapper>
                       <ModelImage src={image} alt={`Favorite Model ${index + 1}`} width={260} height={390} />
@@ -45,7 +43,7 @@ const PopularModelSection = ({ images, names }: PopularModelSectionProps) => {
               </Slider>
             </CarouselWrapper>
           ) : (
-            images.map((src, index) => (
+            IMAGES.DESIGNER.POPULAR_MODEL.map((src, index) => (
               <ModelWrapper key={index}>
                 <ModelImage src={src} alt={`Favorite Model ${index + 1}`} width={200} height={300} />
                 <ModelInfo>
@@ -77,7 +75,7 @@ const PopularModelSection = ({ images, names }: PopularModelSectionProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="/assets/images/app-store.svg" alt="App Store" width={200} height={60} />
+            <Image src="/icons/app-store.svg" alt="App Store" width={200} height={60} />
           </LinkButton>
         </ButtonGroup>
       </ContentWrapper>

@@ -1,5 +1,14 @@
 import { useState, useEffect } from 'react'
-import getContractCount, { ContractCountData } from '@/apis/getContractCount'
+import axios from 'axios'
+
+interface ContractCountData {
+  contractCount: number
+}
+
+const getContractCount = async (): Promise<ContractCountData> => {
+  const res = await axios.get('https://meemong.com/un/contractCount')
+  return res.data
+}
 
 const useContractCount = () => {
   const [contractCount, setContractCount] = useState<number | null>(null)

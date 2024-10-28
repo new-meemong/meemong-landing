@@ -1,4 +1,4 @@
-import { reviewData } from '@/common/data'
+import { reviewData } from '@/constants/data'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import React from 'react'
 import styled from 'styled-components'
