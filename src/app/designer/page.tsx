@@ -176,7 +176,7 @@ export default function Designer() {
       <ReviewSection reviewData={DESIGNER_REVIEW_DATA} />
 
       {/* 플랜안내 섹션 */}
-      <PlanSection planData={DESIGNER_PLAN_DATA} />
+      <PlanSection planData={DESIGNER_PLAN_DATA} isDesigner={true} />
 
       {/* Footer 섹션 */}
       <FooterSection />

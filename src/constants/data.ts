@@ -67,7 +67,7 @@ const DESIGNER_REVIEW_DATA: ReviewDataType[] = [
 
 const DESIGNER_PLAN_DATA: PlanDataType[] = [
   {
-    icon: '/assets/images/plan/gift.png',
+    icon: '/icons/gift.png',
     title: '무료 플랜',
     description: '직접 경험해 보세요',
     details: [
@@ -82,7 +82,7 @@ const DESIGNER_PLAN_DATA: PlanDataType[] = [
     disabled: false
   },
   {
-    icon: '/assets/images/plan/bulb.png',
+    icon: '/icons/bulb.png',
     title: '월간 구독',
     description: '더 많은 포트폴리오와 매칭이 필요할 때',
     details: [
@@ -97,7 +97,7 @@ const DESIGNER_PLAN_DATA: PlanDataType[] = [
     disabled: true
   },
   {
-    icon: '/assets/images/plan/bulb.png',
+    icon: '/icons/bulb.png',
     title: '연간 구독',
     description: '나만의 퍼스널브랜딩을 위한 최고의 선택',
     details: [
@@ -166,7 +166,7 @@ const MODEL_REVIEW_DATA: ReviewDataType[] = [
 
 const MODEL_PLAN_DATA: PlanDataType[] = [
   {
-    icon: '/assets/images/plan/gift.png',
+    icon: '/icons/gift.png',
     title: '무료 플랜',
     description: '직접 경험해 보세요',
     details: [
@@ -180,7 +180,7 @@ const MODEL_PLAN_DATA: PlanDataType[] = [
     disabled: false
   },
   {
-    icon: '/assets/images/plan/bulb.png',
+    icon: '/icons/bulb.png',
     title: '월간 구독',
     description: '더 많은 포트폴리오와 매칭이 필요할 때',
     details: [
@@ -195,7 +195,7 @@ const MODEL_PLAN_DATA: PlanDataType[] = [
     disabled: true
   },
   {
-    icon: '/assets/images/plan/bulb.png',
+    icon: '/icons/bulb.png',
     title: '연간 구독',
     description: '나만의 퍼스널브랜딩을 위한 최고의 선택',
     details: [

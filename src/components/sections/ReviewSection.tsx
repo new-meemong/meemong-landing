@@ -83,6 +83,7 @@ const ReviewGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     margin-top: 2rem;
+    justify-items: center;
   }
 `
 
@@ -100,6 +101,7 @@ const ReviewCard = styled.div`
     padding: 2rem;
     width: 342px;
     height: auto;
+    margin: 0 auto;
   }
 `
 

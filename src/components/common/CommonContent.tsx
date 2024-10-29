@@ -21,7 +21,7 @@ interface CommonContentProps {
 
 const settings = {
   dots: true,
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -81,7 +81,16 @@ const CommonContent = ({
           ))}
         </p>
       </div>
-      {annotation && <p className="annotation">{annotation}</p>}
+      {annotation && (
+        <p className="annotation">
+          {annotation.split('\\n').map((line, index) => (
+            <Fragment key={`annotation-${index}`}>
+              {index > 0 && <br />}
+              {line}
+            </Fragment>
+          ))}
+        </p>
+      )}
       {isMobile ? (
         <CarouselWrapper $dotcolor={carouselDotColor || theme.colors.gray}>
           <Slider {...settings}>
@@ -146,6 +155,7 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $title1Color?: s
       font-size: 2.2rem;
       font-weight: 900;
       letter-spacing: -0.4px;
+      white-space: nowrap;
     }
   }
 
@@ -174,6 +184,7 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $title1Color?: s
   .annotation {
     margin-top: 1rem;
     font-size: 1.2rem;
+    line-height: 1.5;
     color: ${theme.colors.gray200};
   }
 

@@ -87,7 +87,7 @@ export default function Designer() {
       {/* 메인 커버 */}
       <MainCover>
         {isMobile ? (
-          <MobileCoverImage src={IMAGES.MODEL.COVER.MOBILE} alt="cover-m" />
+          <MobileCoverImage src={IMAGES.MODEL.COVER.MOBILE} alt="cover-mobile" />
         ) : (
           <Image
             src={IMAGES.MODEL.COVER.WEB}

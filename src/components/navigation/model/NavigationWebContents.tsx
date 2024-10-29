@@ -1,4 +1,5 @@
 import CommonContent from '@/components/common/CommonContent'
+import ModelImageRule from '@/components/common/ModelImageRule'
 import { IMAGES } from '@/constants/images'
 import { theme } from '@/constants/theme'
 import React from 'react'
@@ -84,28 +85,6 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                   <FindHairModelPhoneImage src={IMAGES.MODEL.HAIR_MODEL.WEB[2]} alt="Hair Model 3" />
                 </ImageArea>
               </MatchingContent>
-              {/* <ThunderMatchingContent style={{ padding: '10% 10% 0 10%' }}>
-                <TextArea>
-                  <TextAreaInner style={{ marginTop: '10%' }}>
-                    <MainTitle>
-                      <span>02. 번개 매칭</span>
-                      <h2>
-                        급할 때는 번개매칭
-                        <br />
-                        번개 매칭으로 바로 찾기
-                      </h2>
-                    </MainTitle>
-                    <TextDescription>시술하기로한 모델이 갑자기 취소되었나요?</TextDescription>
-                    <TextDescription>급하게 모델이 필요한 경우,더 빠르게 매칭할 수 있는</TextDescription>
-                    <TextDescription>모델 급구게시판을 이용해보세요.</TextDescription>
-                    <TextDescription>더욱 빠른 매칭을 경험할 수 있어요.</TextDescription>
-                  </TextAreaInner>
-                </TextArea>
-                <ImageArea>
-                  <PhoneImage width="50%" src={IMAGES.MODEL.THUNDER_MATCHING.WEB[0]} alt="Thunder Matching 1" />
-                  <PhoneImage width="50%" src={IMAGES.MODEL.THUNDER_MATCHING.WEB[1]} alt="Thunder Matching 2" />
-                </ImageArea>
-              </ThunderMatchingContent> */}
             </ContentSection>
           ) : item === '모델 지원' ? (
             <ContentSection>
@@ -130,14 +109,19 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 title2Color={theme.colors.teal}
                 annotation="*노쇼시 패널티가 있으며 추후 서비스 이용이 불가능할 수 있습니다."
               />
+              <ModelImageRule
+                title="모델 이미지 규칙\n미몽은 투명하고 신뢰할 수 있는 미용 문화 정착을 위해"
+                description="AI모델 / 과도한 보정 / 얼굴이나 이미지를 확인하기 어려운 사진 등올 제한하고 있습니다."
+                recommendImages={IMAGES.MODEL.IMAGE_RULE.RECOMMEND}
+                restrictImages={IMAGES.MODEL.IMAGE_RULE.RESTRICT}
+              />
             </ContentSection>
           ) : item === '번개매칭' ? (
             <ContentSection>
-              <ThunderMatchingContent style={{ padding: '10% 10% 0 10%' }}>
+              <ThunderMatchingContent>
                 <TextArea>
                   <TextAreaInner>
                     <MainTitle>
-                      {/* <span>02. 번개 매칭</span> */}
                       <h2>
                         급할 때는 번개매칭
                         <br />
@@ -151,8 +135,21 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <PhoneImage width="50%" src={IMAGES.MODEL.THUNDER_MATCHING.WEB[0]} alt="Thunder Matching 1" />
-                  <PhoneImage width="50%" src={IMAGES.MODEL.THUNDER_MATCHING.WEB[1]} alt="Thunder Matching 2" />
+                  <ImageWrapper width="40%">
+                    <PhoneImage
+                      height="100%"
+                      className="thunder-first-image"
+                      src={IMAGES.MODEL.THUNDER_MATCHING.WEB[0]}
+                      alt="Thunder Matching 1"
+                    />
+                    <TextBox>
+                      당장 오늘
+                      <br />
+                      헤어모델 하실래요?
+                    </TextBox>
+                  </ImageWrapper>
+
+                  <PhoneImage width="40%" src={IMAGES.MODEL.THUNDER_MATCHING.WEB[1]} alt="Thunder Matching 2" />
                 </ImageArea>
               </ThunderMatchingContent>
             </ContentSection>
@@ -212,13 +209,14 @@ const MatchingContent = styled.div`
 
 const ThunderMatchingContent = styled(MatchingContent)`
   background-color: ${theme.colors.teal100};
-  padding-top: 200px;
+  padding-top: 7rem;
 `
 
 const TextArea = styled.div`
-  flex: 1;
+  width: 50%;
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -246,6 +244,7 @@ const MainTitle = styled.div`
     margin-top: 10px;
     line-height: 1.5;
     white-space: nowrap;
+    font-weight: 900;
   }
 `
 
@@ -306,10 +305,10 @@ const FeatureDescription = styled.p`
 `
 
 const ImageArea = styled.div<{ padding?: string }>`
-  flex: 1;
+  width: 50%;
   display: flex;
   right: 0;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 20px;
   padding: ${(props) => (props.padding ? props.padding : '0')};
 
@@ -339,14 +338,40 @@ const FindHairModelPhoneImage = styled.img`
   }
 `
 
-const PhoneImage = styled.img`
+const PhoneImage = styled.img<{ width?: string }>`
   width: ${(props) => (props.width ? props.width : '100%')};
   height: ${(props) => (props.height ? props.height : 'auto')};
 `
 
 const TextDescription = styled.p`
   font-size: clamp(20px, 1.5vw, 24px);
-  color: #666;
+  color: ${theme.colors.black};
+  margin-bottom: 0.4rem;
+`
+
+const ImageWrapper = styled.div<{ width?: string }>`
+  position: relative;
+  width: ${(props) => (props.width ? props.width : '100%')};
+`
+
+const TextBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  padding: 1rem;
+  box-shadow: 3px 5px 25px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0e0e0e;
 `
 
 export default NavigationWebContents

@@ -86,6 +86,20 @@ export const IMAGES = {
       MOBILE: ['/images/model/rule/rule-mobile1.png', '/images/model/rule/rule-mobile2.png'],
       WEB: ['/images/model/rule/rule-web1.png', '/images/model/rule/rule-web2.png']
     },
+    IMAGE_RULE: {
+      RECOMMEND: [
+        '/images/model/rule/recommend1.png',
+        '/images/model/rule/recommend2.png',
+        '/images/model/rule/recommend3.png',
+        '/images/model/rule/recommend4.png'
+      ],
+      RESTRICT: [
+        '/images/model/rule/restrict1.png',
+        '/images/model/rule/restrict2.png',
+        '/images/model/rule/restrict3.png',
+        '/images/model/rule/restrict4.png'
+      ]
+    },
     THUNDER_MATCHING: {
       MOBILE: [
         '/images/model/thunder-matching/thunder-matching-mobile1.png',

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Image from 'next/image'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import { theme } from '@/constants/theme'
@@ -27,7 +27,7 @@ const PlanSection = ({ planData, isDesigner = true }: PlanSectionProps) => {
       )}
       <PlanCardContainer>
         {planData?.map((plan, index) => (
-          <PlanCard key={index} disabled={plan.disabled}>
+          <PlanCard key={index} disabled={plan.disabled} $isDesigner={isDesigner}>
             <PlanCardInner>
               <CardIcon src={plan.icon} alt={`${plan.title} Icon`} width={40} height={40} />
               <CardTitle $isDesigner={isDesigner}>{plan.title}</CardTitle>
