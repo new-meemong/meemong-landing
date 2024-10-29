@@ -110,7 +110,7 @@ export default function Designer() {
           </CoverSubtitle>
           <ButtonGroup>
             <LinkButton
-              href="https://play.google.com/store/apps/details?id=com.meemong.second&pcampaignid=web_share"
+              href="https://apps.apple.com/kr/app/%EB%AF%B8%EB%AA%BD-%EB%8B%B9%EC%8B%A0%EB%8F%84-%ED%97%A4%EC%96%B4%EB%AA%A8%EB%8D%B8/id1572588554?l=en-GB"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -122,7 +122,7 @@ export default function Designer() {
               />
             </LinkButton>
             <LinkButton
-              href="https://apps.apple.com/kr/app/%EB%AF%B8%EB%AA%BD-%EB%8B%B9%EC%8B%A0%EB%8F%84-%ED%97%A4%EC%96%B4%EB%AA%A8%EB%8D%B8/id1572588554?l=en-GB"
+              href="https://play.google.com/store/apps/details?id=com.meemong.second&pcampaignid=web_share"
               target="_blank"
               rel="noopener noreferrer"
             >

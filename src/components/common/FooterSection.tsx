@@ -104,7 +104,7 @@ const FooterSection = () => {
               <Copyright>COPYRIGHT ©2022 MEEMONG COMPANY ALL RIGHTS RESERVED.</Copyright>
             </CompanyInfo>
             <SocialLinks>
-              <Link href="" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.instagram.com/meemong_official/" target="_blank" rel="noopener noreferrer">
                 <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} />
               </Link>
               {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
@@ -143,7 +143,7 @@ const FooterSection = () => {
               <Copyright>COPYRIGHT ©2022 meemong Company All Rights Reserved.</Copyright>
             </CompanyInfo>
             <SocialLinks>
-              <Link href="" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.instagram.com/meemong_official/" target="_blank" rel="noopener noreferrer">
                 <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} />
               </Link>
               {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
