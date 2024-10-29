@@ -247,14 +247,19 @@ const MainCover = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
+  line-height: 0;
+
   @media (max-width: 768px) {
+    height: auto;
+    display: flex;
   }
 `
 
 const MobileCoverImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  display: block;
 `
 
 const CoverContent = styled.div`
