@@ -2,7 +2,7 @@
 
 import { Button } from '@/styles/CommonStyles'
 import Image from 'next/image'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import styled from 'styled-components'
 import CountDataSection from '@/components/sections/CountDataSection'
 import { useIsMobile } from '@/hooks/useIsMobile'
@@ -21,7 +21,7 @@ import { DESIGNER_PLAN_DATA, DESIGNER_REVIEW_DATA } from '@/constants/data'
 export default function Designer() {
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('헤어모델 매칭')
-  const navItems = ['헤어모델 매칭', '구인구직', '스페어', '교육']
+  const navItems = useMemo(() => ['헤어모델 매칭', '구인구직', '스페어', '교육'], [])
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const isMobile = useIsMobile()
 

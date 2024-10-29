@@ -1,5 +1,4 @@
 import { theme } from '@/constants/theme'
-import { useIsMobile } from '@/hooks/useIsMobile'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
@@ -11,8 +10,6 @@ interface ModelImageRuleProps {
 }
 
 const ModelImageRule = ({ title, description, recommendImages, restrictImages }: ModelImageRuleProps) => {
-  const isMobile = useIsMobile()
-
   return (
     <Container>
       <Title>
