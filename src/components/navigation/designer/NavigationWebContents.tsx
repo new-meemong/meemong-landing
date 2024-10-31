@@ -11,7 +11,10 @@ interface NavigationWebContentsProps {
   }>
 }
 
-const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsProps) => {
+const NavigationWebContents = ({
+  navItems,
+  sectionRefs,
+}: NavigationWebContentsProps) => {
   return (
     <>
       {navItems.map((item) => (
@@ -24,9 +27,9 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
         >
           {item === '헤어모델 매칭' ? (
             <ContentSection>
-              <MatchingContent style={{ margin: '150px 0' }}>
+              <MatchingContent style={{ padding: '10% 0 0 12%' }}>
                 <TextArea>
-                  <TextAreaInner>
+                  <TextAreaInner style={{ width: '90%', maxWidth: '750px' }}>
                     <MainTitle>
                       <span>01. 헤어모델 찾기</span>
                       <h2>
@@ -38,12 +41,16 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                     <FeatureList>
                       <FeatureItem>
                         <IconWrapper>
-                          <MultiCircleIcon src="/icons/multi-circle.svg" alt="Feature1" />
+                          <MultiCircleIcon
+                            src="/icons/multi-circle.svg"
+                            alt="Feature1"
+                          />
                         </IconWrapper>
                         <FeatureContent>
                           <FeatureTitle>5분만에 원하는 모델 찾기</FeatureTitle>
                           <FeatureDescription>
-                            페이, 거리, 성별, 국적부터 원하는 헤어, 얼굴 시술까지
+                            페이, 거리, 성별, 국적부터 원하는 헤어, 얼굴
+                            시술까지
                             <br />
                             내가 필요로 하는 모델들을 서칭해보세요.
                           </FeatureDescription>
@@ -71,7 +78,8 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                           <FeatureDescription>
                             초상권 계약 내 모델 서명까지 완료시,
                             <br />
-                            시술 내역 및 결과물을 포트폴리오에서 모아서 관리할 수 있어요.
+                            시술 내역 및 결과물을 포트폴리오에서 모아서 관리할
+                            수 있어요.
                           </FeatureDescription>
                         </FeatureContent>
                       </FeatureItem>
@@ -79,14 +87,23 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <FindHairModelPhoneImage src={IMAGES.DESIGNER.HAIR_MODEL.WEB[0]} alt="Hair Model 1" />
-                  <FindHairModelPhoneImage src={IMAGES.DESIGNER.HAIR_MODEL.WEB[1]} alt="Hair Model 2" />
-                  <FindHairModelPhoneImage src={IMAGES.DESIGNER.HAIR_MODEL.WEB[2]} alt="Hair Model 3" />
+                  <FindHairModelPhoneImage
+                    src={IMAGES.DESIGNER.HAIR_MODEL.WEB[0]}
+                    alt="Hair Model 1"
+                  />
+                  <FindHairModelPhoneImage
+                    src={IMAGES.DESIGNER.HAIR_MODEL.WEB[1]}
+                    alt="Hair Model 2"
+                  />
+                  <FindHairModelPhoneImage
+                    src={IMAGES.DESIGNER.HAIR_MODEL.WEB[2]}
+                    alt="Hair Model 3"
+                  />
                 </ImageArea>
               </MatchingContent>
               <ThunderMatchingContent style={{ padding: '10% 10% 0 10%' }}>
                 <TextArea>
-                  <TextAreaInner style={{ marginTop: '10%' }}>
+                  <TextAreaInner style={{ width: '80%', maxWidth: '600px' }}>
                     <MainTitle>
                       <span>02. 번개 매칭</span>
                       <h2>
@@ -95,15 +112,31 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                         번개 매칭으로 바로 찾기
                       </h2>
                     </MainTitle>
-                    <TextDescription>시술하기로한 모델이 갑자기 취소되었나요?</TextDescription>
-                    <TextDescription>급하게 모델이 필요한 경우,더 빠르게 매칭할 수 있는</TextDescription>
-                    <TextDescription>모델 급구게시판을 이용해보세요.</TextDescription>
-                    <TextDescription>더욱 빠른 매칭을 경험할 수 있어요.</TextDescription>
+                    <TextDescription>
+                      시술하기로한 모델이 갑자기 취소되었나요?
+                    </TextDescription>
+                    <TextDescription>
+                      급하게 모델이 필요한 경우,더 빠르게 매칭할 수 있는
+                    </TextDescription>
+                    <TextDescription>
+                      모델 급구게시판을 이용해보세요.
+                    </TextDescription>
+                    <TextDescription>
+                      더욱 빠른 매칭을 경험할 수 있어요.
+                    </TextDescription>
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <PhoneImage width="50%" src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[0]} alt="Thunder Matching 1" />
-                  <PhoneImage width="50%" src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[1]} alt="Thunder Matching 2" />
+                  <PhoneImage
+                    width="50%"
+                    src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[0]}
+                    alt="Thunder Matching 1"
+                  />
+                  <PhoneImage
+                    width="50%"
+                    src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[1]}
+                    alt="Thunder Matching 2"
+                  />
                 </ImageArea>
               </ThunderMatchingContent>
             </ContentSection>
@@ -117,7 +150,7 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                 images={IMAGES.DESIGNER.RECRUIT.WEB.slice(0, 2)}
                 title2Color={theme.colors.primary}
                 ImageContainerStyle={{
-                  marginTop: '50px'
+                  marginTop: '50px',
                 }}
               />
               <CommonContent
@@ -206,17 +239,18 @@ const MatchingContent = styled.div`
 
 const ThunderMatchingContent = styled(MatchingContent)`
   background-color: #d1ccff;
-  padding-top: 200px;
 `
 
 const TextArea = styled.div`
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  padding-left: 5%;
 
   @media (max-width: 1024px) {
     width: 100%;
     justify-content: center;
+    padding-left: 0;
   }
 `
 
@@ -225,6 +259,8 @@ const TextAreaInner = styled.div<{ padding?: string }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 80%;
+  max-width: 600px;
 `
 
 const MainTitle = styled.div`
