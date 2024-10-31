@@ -11,13 +11,16 @@ const FloatingButtons = () => {
         rel="noopener noreferrer"
         $color="#32161E"
         $backgroundColor="#FFE500"
-        style={{ border: '1.5px solid #fff', boxShadow: '4px 4px 10px 0px rgba(253, 216, 53, 0.50)' }}
+        style={{
+          border: '1.5px solid #fff',
+          boxShadow: '4px 4px 10px 0px rgba(253, 216, 53, 0.50)',
+        }}
       >
         <Image src="/icons/kakao.png" alt="kakao" width={60} height={60} />
         <span>1:1 문의하기</span>
       </FloatingButton>
       <FloatingButton
-        href="https://forms.gle/SoDsrB3FD4uBbj6m8"
+        href="https://forms.gle/fQTP7sHMZFUT6c198"
         target="_blank"
         rel="noopener noreferrer"
         $color="#fff"
