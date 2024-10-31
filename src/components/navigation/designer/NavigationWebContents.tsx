@@ -152,7 +152,7 @@ const NavigationWebContents = ({
             <ContentSection>
               <CommonContent
                 title1="구인구직은 미몽에서"
-                title2="면접 보는 시간도\n아끼세요"
+                title2="면접 보는 시간도 아끼세요"
                 description1="미몽 앱 안에서 원하는 매장으로"
                 description2="바로바로 이력서를 전송하세요."
                 images={IMAGES.DESIGNER.RECRUIT.WEB.slice(0, 2)}
