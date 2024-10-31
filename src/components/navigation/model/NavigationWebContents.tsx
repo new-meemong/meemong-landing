@@ -12,7 +12,10 @@ interface NavigationWebContentsProps {
   }>
 }
 
-const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsProps) => {
+const NavigationWebContents = ({
+  navItems,
+  sectionRefs,
+}: NavigationWebContentsProps) => {
   return (
     <>
       {navItems.map((item) => (
@@ -39,12 +42,17 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                     <FeatureList>
                       <FeatureItem>
                         <IconWrapper>
-                          <MultiCircleIcon src="/icons/multi-circle.svg" alt="Feature1" />
+                          <MultiCircleIcon
+                            src="/icons/multi-circle.svg"
+                            alt="Feature1"
+                          />
                         </IconWrapper>
                         <FeatureContent>
-                          <FeatureTitle>내 근처 디자이너를 찾아보세요</FeatureTitle>
+                          <FeatureTitle>
+                            내 근처 디자이너를 찾아보세요
+                          </FeatureTitle>
                           <FeatureDescription>
-                            내ㅐ 근처, 시술 유형, 무료시술, 약제값, 지불 등
+                            내 근처, 시술 유형, 무료시술, 약제값, 지불 등
                             <br />
                             원하는 정보에 맞춰서 디자이너를 찾아보세요.
                           </FeatureDescription>
@@ -55,7 +63,9 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                           <CircleIcon src="/icons/circle.svg" alt="Feature2" />
                         </IconWrapper>
                         <FeatureContent>
-                          <FeatureTitle>디자이너에게 채팅으로 문의하세요</FeatureTitle>
+                          <FeatureTitle>
+                            디자이너에게 채팅으로 문의하세요
+                          </FeatureTitle>
                           <FeatureDescription>
                             원하는 디자이너에게 채팅을 무료로 보내고
                             <br />
@@ -68,7 +78,9 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                           <CircleIcon src="/icons/circle.svg" alt="Feature3" />
                         </IconWrapper>
                         <FeatureContent>
-                          <FeatureTitle>안전하게 계약서도 작성하세요</FeatureTitle>
+                          <FeatureTitle>
+                            안전하게 계약서도 작성하세요
+                          </FeatureTitle>
                           <FeatureDescription>
                             안전하고 명확한 약속을 위해 앱에서 바로
                             <br />
@@ -80,9 +92,18 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <FindHairModelPhoneImage src={IMAGES.MODEL.HAIR_MODEL.WEB[0]} alt="Hair Model 1" />
-                  <FindHairModelPhoneImage src={IMAGES.MODEL.HAIR_MODEL.WEB[1]} alt="Hair Model 2" />
-                  <FindHairModelPhoneImage src={IMAGES.MODEL.HAIR_MODEL.WEB[2]} alt="Hair Model 3" />
+                  <FindHairModelPhoneImage
+                    src={IMAGES.MODEL.HAIR_MODEL.WEB[0]}
+                    alt="Hair Model 1"
+                  />
+                  <FindHairModelPhoneImage
+                    src={IMAGES.MODEL.HAIR_MODEL.WEB[1]}
+                    alt="Hair Model 2"
+                  />
+                  <FindHairModelPhoneImage
+                    src={IMAGES.MODEL.HAIR_MODEL.WEB[2]}
+                    alt="Hair Model 3"
+                  />
                 </ImageArea>
               </MatchingContent>
             </ContentSection>
@@ -128,10 +149,16 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                         오늘 당장 모델 시작하기
                       </h2>
                     </MainTitle>
-                    <TextDescription>포트폴리오가 필요한 디자이너들이</TextDescription>
-                    <TextDescription>번개매칭으로 매 일, 매 시간 모델을 구하고 있어요.</TextDescription>
+                    <TextDescription>
+                      포트폴리오가 필요한 디자이너들이
+                    </TextDescription>
+                    <TextDescription>
+                      번개매칭으로 매 일, 매 시간 모델을 구하고 있어요.
+                    </TextDescription>
                     <TextDescription>모델이 처음인가요?</TextDescription>
-                    <TextDescription>오늘 당장 헤어모델을 시작하세요.</TextDescription>
+                    <TextDescription>
+                      오늘 당장 헤어모델을 시작하세요.
+                    </TextDescription>
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
@@ -149,7 +176,11 @@ const NavigationWebContents = ({ navItems, sectionRefs }: NavigationWebContentsP
                     </TextBox>
                   </ImageWrapper>
 
-                  <PhoneImage width="40%" src={IMAGES.MODEL.THUNDER_MATCHING.WEB[1]} alt="Thunder Matching 2" />
+                  <PhoneImage
+                    width="40%"
+                    src={IMAGES.MODEL.THUNDER_MATCHING.WEB[1]}
+                    alt="Thunder Matching 2"
+                  />
                 </ImageArea>
               </ThunderMatchingContent>
             </ContentSection>
@@ -364,7 +395,7 @@ const TextBox = styled.div`
   border-radius: 20px;
   background-color: white;
   position: absolute;
-  top: 54%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;

@@ -127,11 +127,19 @@ const NavigationWebContents = ({
                   </TextAreaInner>
                 </TextArea>
                 <ImageArea>
-                  <PhoneImage
-                    width="50%"
-                    src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[0]}
-                    alt="Thunder Matching 1"
-                  />
+                  <ImageWrapper width="50%">
+                    <PhoneImage
+                      width="100%"
+                      src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[0]}
+                      alt="Thunder Matching 1"
+                    />
+                    <TextBox>
+                      급한 모델이
+                      <br />
+                      필요하신가요?
+                    </TextBox>
+                  </ImageWrapper>
+
                   <PhoneImage
                     width="50%"
                     src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[1]}
@@ -375,6 +383,33 @@ const PhoneImage = styled.img`
 const TextDescription = styled.p`
   font-size: clamp(20px, 1.5vw, 24px);
   color: #666;
+`
+
+// ImageWrapper 컴포넌트 추가
+const ImageWrapper = styled.div<{ width?: string }>`
+  position: relative;
+  width: ${(props) => (props.width ? props.width : '100%')};
+`
+
+// TextBox 컴포넌트 추가
+const TextBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  padding: 1rem;
+  box-shadow: 3px 5px 25px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0e0e0e;
 `
 
 export default NavigationWebContents

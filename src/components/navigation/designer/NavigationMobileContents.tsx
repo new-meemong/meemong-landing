@@ -109,7 +109,16 @@ const NavigationMobileContents = ({
                     {IMAGES.DESIGNER.THUNDER_MATCHING.MOBILE.map(
                       (image, index) => (
                         <div key={index}>
-                          <img src={image} alt={`Hair model ${index + 1}`} />
+                          <ImageWrapper>
+                            <img src={image} alt={`Hair model ${index + 1}`} />
+                            {index === 0 && (
+                              <TextBox>
+                                급한 모델이
+                                <br />
+                                필요하신가요?
+                              </TextBox>
+                            )}
+                          </ImageWrapper>
                         </div>
                       )
                     )}
@@ -287,6 +296,36 @@ const Description = styled.p`
   color: ${theme.colors.text};
   font-weight: 400;
   line-height: 1.7;
+`
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`
+
+const TextBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  padding: 1rem;
+  box-shadow: 3px 5px 25px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0e0e0e;
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 export default NavigationMobileContents
