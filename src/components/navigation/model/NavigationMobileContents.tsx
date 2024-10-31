@@ -1,6 +1,7 @@
 import CommonContent from '@/components/common/CommonContent'
 import ModelImageRule from '@/components/common/ModelImageRule'
 import { IMAGES } from '@/constants/images'
+import { carouselSettings } from '@/constants/settings'
 import { theme } from '@/constants/theme'
 import { CarouselWrapper } from '@/styles/CommonStyles'
 
@@ -15,17 +16,10 @@ interface NavigationMobileContentsProps {
   }>
 }
 
-const carouselSettings = {
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: false,
-  autoplaySpeed: 3000
-}
-
-const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileContentsProps) => {
+const NavigationMobileContents = ({
+  navItems,
+  sectionRefs,
+}: NavigationMobileContentsProps) => {
   return (
     <>
       {navItems.map((item) => (
@@ -56,12 +50,16 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
               <FeatureList>
                 <FeatureItem>
                   <IconWrapper>
-                    <MultiCircleIcon src="/icons/multi-circle.svg" alt="Feature1" />
+                    <MultiCircleIcon
+                      src="/icons/multi-circle.svg"
+                      alt="Feature1"
+                    />
                   </IconWrapper>
                   <FeatureContent>
                     <FeatureTitle>내 근처 디자이너를 찾아보세요</FeatureTitle>
                     <FeatureDescription>
-                      내 근처, 시술 유형, 무료시술, 약제값 지불 등 원하는 정보에 맞춰서 디자이너를 찾아보세요.
+                      내 근처, 시술 유형, 무료시술, 약제값 지불 등 원하는 정보에
+                      맞춰서 디자이너를 찾아보세요.
                     </FeatureDescription>
                   </FeatureContent>
                 </FeatureItem>
@@ -70,9 +68,12 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                     <CircleIcon src="/icons/circle.svg" alt="Feature2" />
                   </IconWrapper>
                   <FeatureContent>
-                    <FeatureTitle>디자이너에게 채팅으로 문의하세요</FeatureTitle>
+                    <FeatureTitle>
+                      디자이너에게 채팅으로 문의하세요
+                    </FeatureTitle>
                     <FeatureDescription>
-                      원하는 모델에게 견적서를 보내고 채팅을 통해 견적서 내 일시, 페이 등을 조율해보세요.
+                      원하는 모델에게 견적서를 보내고 채팅을 통해 견적서 내
+                      일시, 페이 등을 조율해보세요.
                     </FeatureDescription>
                   </FeatureContent>
                 </FeatureItem>
@@ -83,7 +84,8 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                   <FeatureContent>
                     <FeatureTitle>안전하게 계약서도 작성하세요</FeatureTitle>
                     <FeatureDescription>
-                      안전하고 명확한 약속을 위해 앱에서 바로 시술에 대한 계약서를 작성할 수 있어요.
+                      안전하고 명확한 약속을 위해 앱에서 바로 시술에 대한
+                      계약서를 작성할 수 있어요.
                     </FeatureDescription>
                   </FeatureContent>
                 </FeatureItem>
@@ -123,11 +125,18 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
               />
             </FeatureSection>
           ) : item === '번개매칭' ? (
-            <SectionInner style={{ alignItems: 'center', backgroundColor: 'rgba(0, 172, 172, 0.20)' }}>
+            <SectionInner
+              style={{
+                alignItems: 'center',
+                backgroundColor: 'rgba(0, 172, 172, 0.20)',
+              }}
+            >
               <h1>급할 때는 번개매칭</h1>
               <h1>오늘부터 모델 시작하기</h1>
 
-              <span style={{ marginTop: '1rem' }}>포트폴리오가 필요한 디자이너들이</span>
+              <span style={{ marginTop: '1rem' }}>
+                포트폴리오가 필요한 디자이너들이
+              </span>
               <span>번개매칭으로 매 일, 매 시간 모델을 구하고 있어요.</span>
               <span>모델이 처음인가요?</span>
               <span>오늘부터 나도 헤어모델로 시작하세요.</span>
@@ -137,7 +146,10 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                   {IMAGES.MODEL.THUNDER_MATCHING.MOBILE.map((image, index) => (
                     <div key={index}>
                       <ImageWrapper>
-                        <CarouselImage src={image} alt={`Hair model ${index + 1}`} />
+                        <CarouselImage
+                          src={image}
+                          alt={`Hair model ${index + 1}`}
+                        />
                         {index === 0 && (
                           <TextBox>
                             당장 오늘

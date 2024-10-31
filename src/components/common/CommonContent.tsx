@@ -4,6 +4,7 @@ import { theme } from '@/constants/theme'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 import { CarouselWrapper } from '@/styles/CommonStyles'
+import { carouselSettings } from '@/constants/settings'
 
 interface CommonContentProps {
   title1: string
@@ -19,16 +20,6 @@ interface CommonContentProps {
   annotation?: string
 }
 
-const settings = {
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: false,
-  autoplaySpeed: 3000
-}
-
 const CommonContent = ({
   title1,
   title2,
@@ -40,11 +31,15 @@ const CommonContent = ({
   backgroundColor,
   ImageContainerStyle,
   carouselDotColor,
-  annotation
+  annotation,
 }: CommonContentProps) => {
   const isMobile = useIsMobile()
   return (
-    <StyledCommonContent $title2Color={title2Color} $title1Color={title1Color} $backgroundColor={backgroundColor}>
+    <StyledCommonContent
+      $title2Color={title2Color}
+      $title1Color={title1Color}
+      $backgroundColor={backgroundColor}
+    >
       <div className="title-container">
         <h1>
           {title1.split('\\n').map((line, index) => (
@@ -93,7 +88,7 @@ const CommonContent = ({
       )}
       {isMobile ? (
         <CarouselWrapper $dotcolor={carouselDotColor || theme.colors.gray}>
-          <Slider {...settings}>
+          <Slider {...{ ...carouselSettings, centerPadding: '60px' }}>
             {images?.map((image, index) => (
               <div key={index}>
                 <img src={image} alt={`Hair model ${index + 1}`} />
@@ -112,7 +107,11 @@ const CommonContent = ({
   )
 }
 
-const StyledCommonContent = styled.div<{ $title2Color?: string; $title1Color?: string; $backgroundColor?: string }>`
+const StyledCommonContent = styled.div<{
+  $title2Color?: string
+  $title1Color?: string
+  $backgroundColor?: string
+}>`
   display: flex;
   margin: 0 auto;
   width: 100%;
@@ -139,7 +138,7 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $title1Color?: s
     margin-bottom: 0.7rem;
 
     @media (max-width: 768px) {
-      font-size: 2rem;
+      font-size: 1.8rem;
       letter-spacing: -0.4px;
       margin-bottom: 1rem;
       font-weight: 900;
@@ -152,7 +151,7 @@ const StyledCommonContent = styled.div<{ $title2Color?: string; $title1Color?: s
     margin-bottom: 12px;
 
     @media (max-width: 768px) {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 900;
       letter-spacing: -0.4px;
       white-space: nowrap;

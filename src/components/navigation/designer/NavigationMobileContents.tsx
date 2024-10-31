@@ -8,6 +8,7 @@ import CommonContent from '../../common/CommonContent'
 
 import { CarouselWrapper } from '@/styles/CommonStyles'
 import { IMAGES } from '@/constants/images'
+import { carouselSettings } from '@/constants/settings'
 
 interface NavigationMobileContentsProps {
   navItems: string[]
@@ -16,17 +17,10 @@ interface NavigationMobileContentsProps {
   }>
 }
 
-const carouselSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: false,
-  autoplaySpeed: 3000
-}
-
-const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileContentsProps) => {
+const NavigationMobileContents = ({
+  navItems,
+  sectionRefs,
+}: NavigationMobileContentsProps) => {
   return (
     <>
       {navItems.map((item) => (
@@ -57,12 +51,16 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
               <FeatureList>
                 <FeatureItem>
                   <IconWrapper>
-                    <MultiCircleIcon src="/icons/multi-circle.svg" alt="Feature1" />
+                    <MultiCircleIcon
+                      src="/icons/multi-circle.svg"
+                      alt="Feature1"
+                    />
                   </IconWrapper>
                   <FeatureContent>
                     <FeatureTitle>5분만에 원하는 모델 찾기</FeatureTitle>
                     <FeatureDescription>
-                      페이, 거리, 성별, 국적부터 원하는 헤어, 얼굴 시술까지 내가 필요로 하는 모델들을 서칭해보세요.
+                      페이, 거리, 성별, 국적부터 원하는 헤어, 얼굴 시술까지 내가
+                      필요로 하는 모델들을 서칭해보세요.
                     </FeatureDescription>
                   </FeatureContent>
                 </FeatureItem>
@@ -73,7 +71,8 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                   <FeatureContent>
                     <FeatureTitle>즉시 채팅으로 시술 제안</FeatureTitle>
                     <FeatureDescription>
-                      원하는 모델에게 견적서를 보내고 채팅을 통해 견적서 내 일시, 페이 등을 조율해보세요.
+                      원하는 모델에게 견적서를 보내고 채팅을 통해 견적서 내
+                      일시, 페이 등을 조율해보세요.
                     </FeatureDescription>
                   </FeatureContent>
                 </FeatureItem>
@@ -84,7 +83,8 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                   <FeatureContent>
                     <FeatureTitle>앱에서 바로 초상권 계약</FeatureTitle>
                     <FeatureDescription>
-                      초상권 계약 내 모델 서명까지 완료시, 시술 내역 및 결과물을 포트폴리오에서 모아서 관리할 수 있어요.
+                      초상권 계약 내 모델 서명까지 완료시, 시술 내역 및 결과물을
+                      포트폴리오에서 모아서 관리할 수 있어요.
                     </FeatureDescription>
                   </FeatureContent>
                 </FeatureItem>
@@ -95,19 +95,24 @@ const NavigationMobileContents = ({ navItems, sectionRefs }: NavigationMobileCon
                 <h1>급할 때는 번개매칭</h1>
                 <h1>번개 매칭으로 바로 찾기</h1>
                 <DescriptionBox>
-                  <Description>시술하기로한 모델이 갑자기 취소되었나요?</Description>
                   <Description>
-                    급하게 모델이 필요한 경우, 더 빠르게 매칭 할 수 있는 모델 급구게시판을 이용해보세요.
+                    시술하기로한 모델이 갑자기 취소되었나요?
+                  </Description>
+                  <Description>
+                    급하게 모델이 필요한 경우, 더 빠르게 매칭 할 수 있는 모델
+                    급구게시판을 이용해보세요.
                   </Description>
                   <Description>더욱 빠른 매칭을 경험할 수 있어요.</Description>
                 </DescriptionBox>
                 <CarouselWrapper $dotcolor={theme.colors.white}>
                   <Slider {...carouselSettings}>
-                    {IMAGES.DESIGNER.THUNDER_MATCHING.MOBILE.map((image, index) => (
-                      <div key={index}>
-                        <img src={image} alt={`Hair model ${index + 1}`} />
-                      </div>
-                    ))}
+                    {IMAGES.DESIGNER.THUNDER_MATCHING.MOBILE.map(
+                      (image, index) => (
+                        <div key={index}>
+                          <img src={image} alt={`Hair model ${index + 1}`} />
+                        </div>
+                      )
+                    )}
                   </Slider>
                 </CarouselWrapper>
               </SectionInner>

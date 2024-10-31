@@ -39,22 +39,40 @@ const Title = styled.h1`
 const CarouselWrapper = styled.div<{ $dotcolor?: string }>`
   width: 100%;
   margin-top: 2rem;
+  padding: 0 24px;
 
   .slick-slider {
     margin: 0 -24px;
   }
 
   .slick-slide {
-    padding: 0 24px;
+    padding: 0 10px;
     box-sizing: border-box;
     display: flex !important;
     justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+
+  .slick-current {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .slick-list {
+    margin: 0 -10px;
+    overflow: visible;
   }
 
   .slick-slide img {
     width: 260px;
     height: auto;
     margin: 0 auto;
+    transition: transform 0.3s ease;
+  }
+
+  .slick-current img {
+    transform: scale(1.05);
   }
 
   .slick-dots {
@@ -72,6 +90,15 @@ const CarouselWrapper = styled.div<{ $dotcolor?: string }>`
         font-size: 12px;
         color: ${theme.colors.gray};
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+
+    .slick-slide img {
+      width: 100%;
+      max-width: 260px;
     }
   }
 `
