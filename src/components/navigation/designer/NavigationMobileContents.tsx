@@ -139,10 +139,10 @@ const NavigationMobileContents = ({
               />
               <CommonContent
                 title1="구인구직은 미몽으로"
-                title2="내가 원하는 매장만 즉시찾기"
+                title2="내가 원하는 매장만 \n 즉시찾기"
                 title2Color={theme.colors.primary}
-                description1="미용인의 눈높이에 맞춘"
-                description2="상세한 필터 덕분에 \n 원하는 매장을 즉시 찾을 수 있어요!"
+                description1="미용인의 눈높이에 맞춘 \n 상세한 필터 덕분에 \n 원하는 매장을 즉시 찾을 수 있어요!"
+                description2=""
                 images={IMAGES.DESIGNER.RECRUIT.MOBILE.slice(2, 4)}
                 backgroundColor={theme.colors.violet100}
               />
@@ -178,7 +178,7 @@ const NavigationMobileContents = ({
             <FeatureSection>
               <CommonContent
                 title1="디자이너 실력향상"
-                title2="새로운 헤어트렌드와 기술 학습"
+                title2="새로운 헤어트렌드와 \n 기술 학습"
                 title2Color={theme.colors.primary}
                 description1="미용 아카데미 '캐미티드'와의"
                 description2="제휴 할인 기회를 제공"
