@@ -12,17 +12,21 @@ import PopularModelSection from '@/components/sections/PopularModelSection'
 import ReviewSection from '@/components/sections/ReviewSection'
 import PlanSection from '@/components/sections/PlanSection'
 import FooterSection from '@/components/common/FooterSection'
-import FloatingButtons from '@/components/common/FloatingButtons'
 import { IMAGES } from '@/constants/images'
 import Loading from '@/components/common/Loading'
 import { useRouter } from 'next/navigation'
 import { theme } from '@/constants/theme'
 import { MODEL_PLAN_DATA, MODEL_REVIEW_DATA } from '@/constants/data'
+import FloatingKaKaoButton from '@/components/common/FloatingKaKaoButton'
+import FloatingButtonContainer from '@/components/common/FloatingButtonContainer'
 
 export default function Designer() {
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('헤어모델')
-  const navItems = useMemo(() => ['헤어모델', '모델 지원', '모델 규칙', '번개매칭', '미용 알바하기'], [])
+  const navItems = useMemo(
+    () => ['헤어모델', '모델 지원', '모델 규칙', '번개매칭', '미용 알바하기'],
+    []
+  )
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const isMobile = useIsMobile()
 
@@ -34,7 +38,10 @@ export default function Designer() {
         const element = sectionRefs.current[section]
         if (element) {
           const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section)
             break
           }
@@ -50,12 +57,13 @@ export default function Designer() {
     const element = sectionRefs.current[section]
     if (element) {
       const navHeight = 120
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - navHeight
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       })
     }
   }
@@ -74,20 +82,33 @@ export default function Designer() {
       <Header>
         <HeaderInner>
           <LogoBox>
-            <Image style={{ marginTop: 5 }} src="/icons/logo-web.svg" alt="logo" width={30} height={30} />
+            <Image
+              style={{ marginTop: 5 }}
+              src="/icons/logo-web.svg"
+              alt="logo"
+              width={30}
+              height={30}
+            />
             <span>미몽 MEEMONG</span>
           </LogoBox>
           <Button onClick={onClickDesignerPage}>
             <span>헤어디자이너 페이지 가기</span>
-            <Image width={9} height={12} src={'/icons/chevron/right-chevron.svg'} alt="arrow" />
+            <Image
+              width={9}
+              height={12}
+              src={'/icons/chevron/right-chevron.svg'}
+              alt="arrow"
+            />
           </Button>
         </HeaderInner>
       </Header>
-
       {/* 메인 커버 */}
       <MainCover>
         {isMobile ? (
-          <MobileCoverImage src={IMAGES.MODEL.COVER.MOBILE} alt="cover-mobile" />
+          <MobileCoverImage
+            src={IMAGES.MODEL.COVER.MOBILE}
+            alt="cover-mobile"
+          />
         ) : (
           <Image
             src={IMAGES.MODEL.COVER.WEB}
@@ -97,7 +118,7 @@ export default function Designer() {
             style={{
               width: '100%',
               height: 'auto',
-              objectFit: 'cover'
+              objectFit: 'cover',
             }}
             priority
           />
@@ -138,12 +159,22 @@ export default function Designer() {
           {!isMobile && (
             <DesignerPageButton onClick={onClickDesignerPage}>
               <p>
-                <Image width={32} height={32} src="/icons/bulb.png" alt="bulb" />
+                <Image
+                  width={32}
+                  height={32}
+                  src="/icons/bulb.png"
+                  alt="bulb"
+                />
                 <span>모델이 아니라, 헤어디자이너이신가요?</span>
               </p>
               <div>
                 <span>헤어디자이너 전용 페이지 이동하기</span>
-                <Image width={9} height={16} src="/icons/chevron/right-chevron-white.svg" alt="arrow" />
+                <Image
+                  width={9}
+                  height={16}
+                  src="/icons/chevron/right-chevron-white.svg"
+                  alt="arrow"
+                />
               </div>
             </DesignerPageButton>
           )}
@@ -160,50 +191,73 @@ export default function Designer() {
               <span>헤어디자이너</span>
               <span>전용페이지로 이동하기</span>
             </p>
-            <Image width={16} height={40} src="/icons/chevron/right-chevron-long-white.svg" alt="arrow" />
+            <Image
+              width={16}
+              height={40}
+              src="/icons/chevron/right-chevron-long-white.svg"
+              alt="arrow"
+            />
           </MobileDesignerPageButton>
         </MobileDesignerPageButtonWrapper>
       )}
-
       {/* API 데이터 영역 */}
       <CountDataSection />
-
       {/* 네비게이션바 */}
       <Navigation>
         {navItems.map((item) => (
-          <NavItem key={item} $active={activeSection === item} onClick={() => scrollToSection(item)}>
+          <NavItem
+            key={item}
+            $active={activeSection === item}
+            onClick={() => scrollToSection(item)}
+          >
             {item}
           </NavItem>
         ))}
       </Navigation>
-
       {/* 네이게이션 컨텐츠 영역 */}
       {isMobile ? (
-        <NavigationMobileContents navItems={navItems} sectionRefs={sectionRefs} />
+        <NavigationMobileContents
+          navItems={navItems}
+          sectionRefs={sectionRefs}
+        />
       ) : (
         <NavigationWebContents navItems={navItems} sectionRefs={sectionRefs} />
       )}
-
       {/* 인기있는모델 섹션 */}
       <PopularModelSection
-        names={['강남 아X 디자이너', '분당 송X 디자이너', '잠실 규X 디자이너', '청담 이X 디자이너']}
+        names={[
+          '강남 아X 디자이너',
+          '분당 송X 디자이너',
+          '잠실 규X 디자이너',
+          '청담 이X 디자이너',
+        ]}
         images={IMAGES.MODEL.POPULAR_DESIGNER}
-        descriptions={['파마 | 클리닉', '컷트 | 염색', '매직 | 드라이', '염색 | 탈색']}
+        descriptions={[
+          '파마 | 클리닉',
+          '컷트 | 염색',
+          '매직 | 드라이',
+          '염색 | 탈색',
+        ]}
         backgroundColor={theme.colors.team200}
         isDesigner={false}
       />
-
       {/* 리뷰 섹션 */}
-      <ReviewSection reviewData={MODEL_REVIEW_DATA} color={theme.colors.team300} />
-
+      <ReviewSection
+        reviewData={MODEL_REVIEW_DATA}
+        color={theme.colors.team300}
+      />
       {/* 플랜안내 섹션 */}
-      <PlanSection planData={MODEL_PLAN_DATA} isDesigner={false} />
-
+      <PlanSection
+        planData={MODEL_PLAN_DATA}
+        description="헤어모델이 되고 돈도 버는 앱, 미몽"
+        isDesigner={false}
+      />
       {/* Footer 섹션 */}
       <FooterSection />
-
       {/* 플로팅 버튼 영역 */}
-      <FloatingButtons />
+      <FloatingButtonContainer>
+        <FloatingKaKaoButton link="https://pf.kakao.com/_NtWKG" />
+      </FloatingButtonContainer>
     </>
   )
 }

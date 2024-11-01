@@ -12,16 +12,22 @@ import PopularModelSection from '@/components/sections/PopularModelSection'
 import ReviewSection from '@/components/sections/ReviewSection'
 import PlanSection from '@/components/sections/PlanSection'
 import FooterSection from '@/components/common/FooterSection'
-import FloatingButtons from '@/components/common/FloatingButtons'
+
 import { IMAGES } from '@/constants/images'
 import Loading from '@/components/common/Loading'
 import { useRouter } from 'next/navigation'
 import { DESIGNER_PLAN_DATA, DESIGNER_REVIEW_DATA } from '@/constants/data'
+import FloatingButtonContainer from '@/components/common/FloatingButtonContainer'
+import FloatingKaKaoButton from '@/components/common/FloatingKaKaoButton'
+import FloatingFormButton from '@/components/common/FloatingFormButton'
 
 export default function Designer() {
   const router = useRouter()
   const [activeSection, setActiveSection] = useState('헤어모델 매칭')
-  const navItems = useMemo(() => ['헤어모델 매칭', '구인구직', '스페어', '교육'], [])
+  const navItems = useMemo(
+    () => ['헤어모델 매칭', '구인구직', '스페어', '교육'],
+    []
+  )
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const isMobile = useIsMobile()
 
@@ -33,7 +39,10 @@ export default function Designer() {
         const element = sectionRefs.current[section]
         if (element) {
           const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section)
             break
           }
@@ -49,12 +58,13 @@ export default function Designer() {
     const element = sectionRefs.current[section]
     if (element) {
       const navHeight = 120
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - navHeight
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       })
     }
   }
@@ -73,12 +83,23 @@ export default function Designer() {
       <Header>
         <HeaderInner>
           <LogoBox>
-            <Image style={{ marginTop: 5 }} src="/icons/logo-web.svg" alt="logo" width={30} height={30} />
+            <Image
+              style={{ marginTop: 5 }}
+              src="/icons/logo-web.svg"
+              alt="logo"
+              width={30}
+              height={30}
+            />
             <span>미몽 MEEMONG</span>
           </LogoBox>
           <Button onClick={onClickModelPage}>
             <span>헤어모델 페이지 가기</span>
-            <Image width={9} height={12} src={'/icons/chevron/right-chevron.svg'} alt="arrow" />
+            <Image
+              width={9}
+              height={12}
+              src={'/icons/chevron/right-chevron.svg'}
+              alt="arrow"
+            />
           </Button>
         </HeaderInner>
       </Header>
@@ -96,7 +117,7 @@ export default function Designer() {
             style={{
               width: '100%',
               height: 'auto',
-              objectFit: 'cover'
+              objectFit: 'cover',
             }}
             priority
           />
@@ -136,7 +157,12 @@ export default function Designer() {
           </ButtonGroup>
           <ModelPageButton onClick={onClickModelPage}>
             <span>헤어모델 전용 페이지 가기</span>
-            <Image width={9} height={12} src="/icons/chevron/right-chevron.svg" alt="arrow" />
+            <Image
+              width={9}
+              height={12}
+              src="/icons/chevron/right-chevron.svg"
+              alt="arrow"
+            />
           </ModelPageButton>
         </CoverContent>
       </MainCover>
@@ -147,7 +173,11 @@ export default function Designer() {
       {/* 네비게이션바 */}
       <Navigation>
         {navItems.map((item) => (
-          <NavItem key={item} $active={activeSection === item} onClick={() => scrollToSection(item)}>
+          <NavItem
+            key={item}
+            $active={activeSection === item}
+            onClick={() => scrollToSection(item)}
+          >
             {item}
           </NavItem>
         ))}
@@ -155,7 +185,10 @@ export default function Designer() {
 
       {/* 네이게이션 컨텐츠 영역 */}
       {isMobile ? (
-        <NavigationMobileContents navItems={navItems} sectionRefs={sectionRefs} />
+        <NavigationMobileContents
+          navItems={navItems}
+          sectionRefs={sectionRefs}
+        />
       ) : (
         <NavigationWebContents navItems={navItems} sectionRefs={sectionRefs} />
       )}
@@ -167,7 +200,7 @@ export default function Designer() {
           '무료 모델 | 이번달 인기',
           '무료 모델 | 이번달 인기',
           '무료 모델 | 이번달 인기',
-          '무료 모델 | 이번달 인기'
+          '무료 모델 | 이번달 인기',
         ]}
         images={IMAGES.DESIGNER.POPULAR_MODEL}
       />
@@ -176,13 +209,20 @@ export default function Designer() {
       <ReviewSection reviewData={DESIGNER_REVIEW_DATA} />
 
       {/* 플랜안내 섹션 */}
-      <PlanSection planData={DESIGNER_PLAN_DATA} isDesigner={true} />
+      <PlanSection
+        planData={DESIGNER_PLAN_DATA}
+        description="헤어디자이너라면 지금 무료로 시작하세요."
+        isDesigner={true}
+      />
 
       {/* Footer 섹션 */}
       <FooterSection />
 
       {/* 플로팅 버튼 영역 */}
-      <FloatingButtons />
+      <FloatingButtonContainer>
+        <FloatingKaKaoButton link="https://pf.kakao.com/_NtWKG" />
+        <FloatingFormButton link="https://forms.gle/fQTP7sHMZFUT6c198" />
+      </FloatingButtonContainer>
     </>
   )
 }

@@ -7,10 +7,15 @@ import { PlanDataType } from '@/constants/data'
 
 interface PlanSectionProps {
   planData: PlanDataType[]
+  description: string
   isDesigner?: boolean
 }
 
-const PlanSection = ({ planData, isDesigner = true }: PlanSectionProps) => {
+const PlanSection = ({
+  planData,
+  description,
+  isDesigner = true,
+}: PlanSectionProps) => {
   const isMobile = useIsMobile()
   return (
     <StyledPlanSection>
@@ -25,9 +30,7 @@ const PlanSection = ({ planData, isDesigner = true }: PlanSectionProps) => {
           <Title $isDesigner={isDesigner}>무료로 시작하세요.</Title>
         </>
       ) : (
-        <Title $isDesigner={isDesigner}>
-          헤어디자이너라면 지금 무료로 시작하세요.
-        </Title>
+        <Title $isDesigner={isDesigner}>{description}</Title>
       )}
       <PlanCardContainer>
         {planData?.map((plan, index) => (
@@ -94,6 +97,7 @@ const Description = styled.p<{ $isDesigner?: boolean }>`
     $isDesigner ? theme.colors.primary : theme.colors.teal};
   margin-bottom: 10px;
   font-weight: 700;
+  white-space: nowrap;
 
   @media (max-width: 768px) {
     padding: 0 1rem;

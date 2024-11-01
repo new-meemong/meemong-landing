@@ -9,17 +9,36 @@ import { SkeletonText } from '../common/Skeleton'
 import dynamic from 'next/dynamic'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
-const DynamicDateDisplay = dynamic(() => import('../common/DateDisplay'), { ssr: false })
+const DynamicDateDisplay = dynamic(() => import('../common/DateDisplay'), {
+  ssr: false,
+})
 
 // 메인 컴포넌트
 const CountDataSection = () => {
-  const { contractCount, isLoading: isContractCountLoading, error: contractCountError } = useContractCount()
-  const { userCount, isLoading: isUserCountLoading, error: userCountError } = useUserCount()
+  const {
+    contractCount,
+    isLoading: isContractCountLoading,
+    error: contractCountError,
+  } = useContractCount()
+  const {
+    userCount,
+    isLoading: isUserCountLoading,
+    error: userCountError,
+  } = useUserCount()
 
-  const animatedModelCount = useCountUp(userCount?.activeUsers?.Model || 0, 1500)
-  const animatedDesignerCount = useCountUp(userCount?.activeUsers?.Designer || 0, 2000)
+  const animatedModelCount = useCountUp(
+    userCount?.activeUsers?.Model || 0,
+    1500
+  )
+  const animatedDesignerCount = useCountUp(
+    userCount?.activeUsers?.Designer || 0,
+    2000
+  )
   const animatedContractCount = useCountUp(contractCount || 0, 2500)
-  const animatedTotalUserCount = useCountUp((userCount?.designerCount || 0) + (userCount?.modelCount || 0), 3000)
+  const animatedTotalUserCount = useCountUp(
+    (userCount?.designerCount || 0) + (userCount?.modelCount || 0),
+    3000
+  )
 
   const isMobile = useIsMobile()
 
@@ -89,6 +108,7 @@ const DataSection = styled.section`
 
   @media (max-width: 768px) {
     padding: 2rem 5%;
+    margin-bottom: 1.5rem;
   }
 `
 

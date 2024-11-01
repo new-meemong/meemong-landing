@@ -103,4 +103,41 @@ const CarouselWrapper = styled.div<{ $dotcolor?: string }>`
   }
 `
 
-export { Container, Button, Title, CarouselWrapper }
+const FloatingButton = styled.a<{ $color: string; $backgroundColor: string }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: ${(props) => props.$backgroundColor};
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  gap: 0.2rem;
+  /* box-shadow: 0px 4px 10px 0px rgba(255, 255, 255, 0.25); */
+
+  // 링크 스타일 제거
+  text-decoration: none;
+  color: ${(props) => props.$color};
+  font-weight: 700;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    font-size: 0.5rem;
+    gap: 0;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+`
+
+export { Container, Button, Title, CarouselWrapper, FloatingButton }

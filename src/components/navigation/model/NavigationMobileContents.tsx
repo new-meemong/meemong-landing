@@ -268,7 +268,7 @@ const FeatureContent = styled.div`
 
 const FeatureTitle = styled.h3`
   margin-top: 1.1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
   color: ${theme.colors.text};
   font-family: 'Pretendard';

@@ -132,7 +132,7 @@ const NavigationWebContents = ({
               />
               <ModelImageRule
                 title="모델 이미지 규칙\n미몽은 투명하고 신뢰할 수 있는 미용 문화 정착을 위해"
-                description="AI모델 / 과도한 보정 / 얼굴이나 이미지를 확인하기 어려운 사진 등올 제한하고 있습니다."
+                description="AI모델 / 과도한 보정 / 얼굴이나 이미지를 확인하기 어려운 사진 등을 제한하고 있습니다."
                 recommendImages={IMAGES.MODEL.IMAGE_RULE.RECOMMEND}
                 restrictImages={IMAGES.MODEL.IMAGE_RULE.RESTRICT}
               />

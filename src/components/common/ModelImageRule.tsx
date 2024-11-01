@@ -9,7 +9,12 @@ interface ModelImageRuleProps {
   restrictImages: string[]
 }
 
-const ModelImageRule = ({ title, description, recommendImages, restrictImages }: ModelImageRuleProps) => {
+const ModelImageRule = ({
+  title,
+  description,
+  recommendImages,
+  restrictImages,
+}: ModelImageRuleProps) => {
   return (
     <Container>
       <Title>
@@ -22,21 +27,28 @@ const ModelImageRule = ({ title, description, recommendImages, restrictImages }:
       </Title>
       <Description>
         {description.split('\\n').map((line, index) => (
-          <Fragment key={`description-${index}`}>
+          <span style={{ whiteSpace: 'nowrap' }} key={`description-${index}`}>
             {index > 0 && <br />}
             {line}
-          </Fragment>
+          </span>
         ))}
       </Description>
 
       <ContentWrapper>
         <Section>
           <SectionTitle>추천하는 모델의 사진</SectionTitle>
-          <SectionDescription>앞, 뒤, 옆머리 각각 최소 한 장 이상 등록해주세요.</SectionDescription>
+          <SectionDescription>
+            앞, 뒤, 옆머리 각각 최소 한 장 이상 등록해주세요.
+          </SectionDescription>
           <ImageGrid>
             {recommendImages.map((image, index) => (
               <ImageWrapper key={index}>
-                <Image width={163} height={163} src={image} alt={`Recommended image ${index + 1}`} />
+                <Image
+                  width={163}
+                  height={163}
+                  src={image}
+                  alt={`Recommended image ${index + 1}`}
+                />
               </ImageWrapper>
             ))}
           </ImageGrid>
@@ -44,11 +56,18 @@ const ModelImageRule = ({ title, description, recommendImages, restrictImages }:
 
         <Section>
           <SectionTitle>승인 불가능한 사진</SectionTitle>
-          <SectionDescription>머리를 가리는 사진은 승인이 불가능합니다.</SectionDescription>
+          <SectionDescription>
+            머리를 가리는 사진은 승인이 불가능합니다.
+          </SectionDescription>
           <ImageGrid>
             {restrictImages.map((image, index) => (
-              <RestrictedImageWrapper key={index}>
-                <RestrictedImage width={163} height={163} src={image} alt={`Restricted image ${index + 1}`} />
+              <RestrictedImageWrapper style={{ padding: 0 }} key={index}>
+                <RestrictedImage
+                  width={163}
+                  height={163}
+                  src={image}
+                  alt={`Restricted image ${index + 1}`}
+                />
                 <Overlay />
               </RestrictedImageWrapper>
             ))}
@@ -111,7 +130,6 @@ const ContentWrapper = styled.div`
 `
 
 const Section = styled.div`
-  /* width: 80%; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -145,15 +163,21 @@ const ImageGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   width: 100%;
+  grid-auto-rows: min-content;
 `
 
 const ImageWrapper = styled.div`
-  aspect-ratio: 1;
-  overflow: hidden;
+  position: relative;
+  padding-top: 100%;
+  width: 100%;
   border-radius: 8px;
+  overflow: hidden;
 `
 
 const Image = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
