@@ -26,14 +26,8 @@ const CountDataSection = () => {
     error: userCountError,
   } = useUserCount()
 
-  const animatedModelCount = useCountUp(
-    userCount?.activeUsers?.Model || 0,
-    1500
-  )
-  const animatedDesignerCount = useCountUp(
-    userCount?.activeUsers?.Designer || 0,
-    2000
-  )
+  const animatedModelCount = useCountUp(userCount?.modelCount || 0, 1500)
+  const animatedDesignerCount = useCountUp(userCount?.designerCount || 0, 2000)
   const animatedContractCount = useCountUp(contractCount || 0, 2500)
   const animatedTotalUserCount = useCountUp(
     (userCount?.designerCount || 0) + (userCount?.modelCount || 0),
