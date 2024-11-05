@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
-    font-family: var(--font-pretandard) !important;
+    /* font-family: var(--font-pretandard) !important; */
     font-size: 16px;
     background-color: #fff;
   }
