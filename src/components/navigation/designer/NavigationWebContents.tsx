@@ -129,7 +129,8 @@ const NavigationWebContents = ({
                 <ImageArea>
                   <ImageWrapper width="50%">
                     <PhoneImage
-                      width="100%"
+                      width="362px"
+                      height="100%"
                       src={IMAGES.DESIGNER.THUNDER_MATCHING.WEB[0]}
                       alt="Thunder Matching 1"
                     />

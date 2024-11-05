@@ -15,14 +15,16 @@ const FooterSection = () => {
           <ContactRow>
             <ContactItem>
               <ContactLabel>가능시간</ContactLabel>
-              <ContactValue>평일 09:00~18:00 / 점심시간 12:00~13:30</ContactValue>
+              <ContactValue>
+                평일 09:00~18:00 / 점심시간 12:00~13:30
+              </ContactValue>
             </ContactItem>
             <ContactItem>
               <ContactLabel>대표 메일</ContactLabel>
               <ContactValue
                 style={{
                   cursor: 'pointer',
-                  color: '#1252F4'
+                  color: '#1252F4',
                 }}
               >
                 hello@meemong.com
@@ -33,14 +35,14 @@ const FooterSection = () => {
               <ContactValue
                 style={{
                   cursor: 'pointer',
-                  color: '#1252F4'
+                  color: '#1252F4',
                 }}
               >
                 02-3446-2669
               </ContactValue>
             </ContactItem>
           </ContactRow>
-          {!isMobile && (
+          {/* {!isMobile && (
             <Links>
               <LinkButton href="/faq">
                 <span>FAQ</span>
@@ -55,25 +57,25 @@ const FooterSection = () => {
                 <Image src="/icons/chevron/right-chevron-gray.svg" alt="arrow" width={9} height={12} />
               </LinkButton>
             </Links>
-          )}
+          )} */}
         </ForCustomer>
         {!isMobile && (
           <ServiceGuide>
-            <Column>
+            {/* <Column>
               <span>미몽</span>
               <Link href="/about">미몽 서비스 소개</Link>
               <Link href="/ad">광고안내</Link>
-            </Column>
+            </Column> */}
             <Column>
               <span>다운로드</span>
               <Link href="/android">Android</Link>
               <Link href="/ios">iOS</Link>
             </Column>
-            <Column>
+            {/* <Column>
               <span>고객센터</span>
               <Link href="/notice">공지사항</Link>
               <Link href="/faq">FAQ</Link>
-            </Column>
+            </Column> */}
           </ServiceGuide>
         )}
       </CustomerServiceArea>
@@ -83,8 +85,15 @@ const FooterSection = () => {
             <CompanyInfo>
               <CompanyDetails>
                 <span>미몽컴퍼니</span>
-                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
-                <span className="address">주소 서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
+                <Image
+                  src="/icons/divider-vertical.svg"
+                  alt="divider"
+                  width={1}
+                  height={11}
+                />
+                <span className="address">
+                  주소 서울특별시 송파쿠 충민로 10, 8층, S16-F74호
+                </span>
               </CompanyDetails>
               <CompanyDetails>
                 <span className="label">대표이사</span>
@@ -101,11 +110,22 @@ const FooterSection = () => {
                 <span className="label">개인정보관리 책임자</span>
                 <span>장혜진</span>
               </CompanyDetails>
-              <Copyright>COPYRIGHT ©2022 MEEMONG COMPANY ALL RIGHTS RESERVED.</Copyright>
+              <Copyright>
+                COPYRIGHT ©2022 MEEMONG COMPANY ALL RIGHTS RESERVED.
+              </Copyright>
             </CompanyInfo>
             <SocialLinks>
-              <Link href="https://www.instagram.com/meemong_official/" target="_blank" rel="noopener noreferrer">
-                <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+              <Link
+                href="https://www.instagram.com/meemong_official/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/icons/instagram.svg"
+                  alt="Instagram"
+                  width={30}
+                  height={30}
+                />
               </Link>
               {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
                 <Image src="/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
@@ -118,15 +138,32 @@ const FooterSection = () => {
             <CompanyInfo>
               <Links>
                 <Link href="/terms">서비스 이용약관</Link>
-                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image
+                  src="/icons/divider-vertical.svg"
+                  alt="divider"
+                  width={1}
+                  height={11}
+                />
                 <Link href="/privacy">개인정보 보호 및 처리방침</Link>
               </Links>
               <CompanyDetails>
                 미몽컴퍼니
-                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image
+                  src="/icons/divider-vertical.svg"
+                  alt="divider"
+                  width={1}
+                  height={11}
+                />
                 <span className="label">주소</span>
-                <span className="value">서울특별시 송파쿠 충민로 10, 8층, S16-F74호</span>
-                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <span className="value">
+                  서울특별시 송파쿠 충민로 10, 8층, S16-F74호
+                </span>
+                <Image
+                  src="/icons/divider-vertical.svg"
+                  alt="divider"
+                  width={1}
+                  height={11}
+                />
                 <span className="label">대표이사</span>
                 <span>유주호</span>
               </CompanyDetails>
@@ -136,15 +173,31 @@ const FooterSection = () => {
                 <Link href="">
                   <span style={{ color: '#1252F4' }}>사업자정보확인</span>
                 </Link>
-                <Image src="/icons/divider-vertical.svg" alt="divider" width={1} height={11} />
+                <Image
+                  src="/icons/divider-vertical.svg"
+                  alt="divider"
+                  width={1}
+                  height={11}
+                />
                 <span className="label">개인정보관리 책임자</span>
                 <span>장혜진</span>
               </CompanyDetails>
-              <Copyright>COPYRIGHT ©2022 meemong Company All Rights Reserved.</Copyright>
+              <Copyright>
+                COPYRIGHT ©2022 meemong Company All Rights Reserved.
+              </Copyright>
             </CompanyInfo>
             <SocialLinks>
-              <Link href="https://www.instagram.com/meemong_official/" target="_blank" rel="noopener noreferrer">
-                <Image src="/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+              <Link
+                href="https://www.instagram.com/meemong_official/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/icons/instagram.svg"
+                  alt="Instagram"
+                  width={30}
+                  height={30}
+                />
               </Link>
               {/* <Link href="https://blog.naver.com/meemong_official" target="_blank" rel="noopener noreferrer">
                 <Image src="/icons/naver-blog.svg" alt="Naver Blog" width={30} height={30} color="red" />
@@ -161,7 +214,7 @@ export default FooterSection
 
 const Footer = styled.footer`
   background-color: #eaeded;
-  padding: 40px 10%;
+  padding: 40px 20%;
 
   @media (max-width: 768px) {
     padding: 40px 1.2rem;

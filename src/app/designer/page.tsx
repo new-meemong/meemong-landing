@@ -366,6 +366,7 @@ const Navigation = styled.nav`
   align-items: center;
   z-index: 100;
   padding: 10px 0;
+  height: 120px;
 
   @media (max-width: 768px) {
     height: 150px;
