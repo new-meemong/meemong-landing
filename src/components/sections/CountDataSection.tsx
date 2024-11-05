@@ -101,8 +101,8 @@ const DataSection = styled.section`
   padding: 50px 20%;
 
   @media (max-width: 768px) {
-    padding: 2rem 5%;
-    margin-bottom: 1.5rem;
+    padding: 1rem 10%;
+    margin-bottom: 1.2rem;
   }
 `
 
@@ -111,7 +111,7 @@ const DataContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 50px;
+  gap: 40px;
   flex-wrap: wrap;
 `
 

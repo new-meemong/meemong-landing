@@ -7,7 +7,7 @@ const carouselSettings = {
   autoplay: false,
   autoplaySpeed: 3000,
   centerMode: true,
-  centerPadding: '40px',
+  centerPadding: '18%',
   arrows: false,
 }
 

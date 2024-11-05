@@ -113,7 +113,7 @@ const Description = styled.p`
 
   @media (max-width: 768px) {
     margin-top: 1rem;
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: 1.5rem;
   }
 `
 

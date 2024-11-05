@@ -88,7 +88,7 @@ const CommonContent = ({
       )}
       {isMobile ? (
         <CarouselWrapper $dotcolor={carouselDotColor || theme.colors.gray}>
-          <Slider {...{ ...carouselSettings, centerPadding: '60px' }}>
+          <Slider {...carouselSettings}>
             {images?.map((image, index) => (
               <div key={index}>
                 <img src={image} alt={`Hair model ${index + 1}`} />

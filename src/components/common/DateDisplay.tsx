@@ -20,14 +20,23 @@ const DateDisplay = () => {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    hour12: false
+    hour12: false,
   })
 
   const formatDate = (date: Date) => {
-    return formatter.format(date).replace(/\./g, '. ').replace('시 ', ':').replace('분 ', ':').replace('초', '')
+    return formatter
+      .format(date)
+      .replace(/\./g, '. ')
+      .replace('시 ', ':')
+      .replace('분 ', ':')
+      .replace('초', '')
   }
 
-  return <StyledDate dateTime={currentTime.toISOString()}>{formatDate(currentTime)}</StyledDate>
+  return (
+    <StyledDate dateTime={currentTime.toISOString()}>
+      {formatDate(currentTime)}
+    </StyledDate>
+  )
 }
 
 const StyledDate = styled.time`
@@ -37,7 +46,7 @@ const StyledDate = styled.time`
 
   @media (max-width: 768px) {
     font-size: 1.2rem;
-    margin: 1rem auto;
+    margin: 0.3rem auto;
   }
 `
 

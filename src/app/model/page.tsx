@@ -56,7 +56,7 @@ export default function Designer() {
   const scrollToSection = (section: string) => {
     const element = sectionRefs.current[section]
     if (element) {
-      const navHeight = 120
+      const navHeight = isMobile ? 56 : 85
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - navHeight
@@ -301,19 +301,21 @@ const MainCover = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
-  line-height: 0;
 
   @media (max-width: 768px) {
-    height: auto;
     display: flex;
+    align-items: flex-start;
   }
 `
 
 const MobileCoverImage = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+
+  @media (max-width: 768px) {
+    margin-top: -60%;
+  }
 `
 
 const CoverContent = styled.div`
@@ -327,6 +329,12 @@ const CoverContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    top: 47%;
+  }
 `
 
 const CoverTitle = styled.h1`
@@ -335,7 +343,7 @@ const CoverTitle = styled.h1`
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 `
 
@@ -355,7 +363,7 @@ const SubTitleText = styled.p`
   line-height: 1.2;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 `
 
@@ -496,20 +504,17 @@ const Navigation = styled.nav`
   justify-content: center;
   align-items: center;
   z-index: 100;
-  padding: 10px 0;
 
   @media (max-width: 768px) {
-    height: 200px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: 10px;
+    height: 56px;
+    padding: 0 1rem;
+    justify-content: center;
   }
 `
 
 const NavItem = styled.a<{ $active: boolean }>`
   color: white;
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding: 1rem 1rem;
   margin: 10px 20px;
   cursor: pointer;
@@ -521,14 +526,10 @@ const NavItem = styled.a<{ $active: boolean }>`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.7rem;
+    font-size: 0.8rem;
     margin: 5px 10px;
     padding: 0;
     text-align: center;
-
-    &:nth-child(1) {
-      grid-row: 1;
-      grid-column: 1 / -1;
-    }
+    white-space: nowrap;
   }
 `

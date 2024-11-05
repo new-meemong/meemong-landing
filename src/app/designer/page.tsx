@@ -57,7 +57,7 @@ export default function Designer() {
   const scrollToSection = (section: string) => {
     const element = sectionRefs.current[section]
     if (element) {
-      const navHeight = 120
+      const navHeight = isMobile ? 56 : 85
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - navHeight
@@ -266,12 +266,21 @@ const MainCover = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+  }
 `
 
 const MobileCoverImage = styled.img`
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: auto; // 자동 높이로 변경
+  display: block; // 추가
+
+  @media (max-width: 768px) {
+    margin-top: -60%; // 상단 여백 조정 (필요에 따라 값 조절)
+  }
 `
 
 const CoverContent = styled.div`
@@ -285,6 +294,12 @@ const CoverContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    top: 47%; // 컨텐츠 위치 조정 (필요에 따라 값 조절)
+  }
 `
 
 const CoverTitle = styled.h1`
@@ -293,7 +308,7 @@ const CoverTitle = styled.h1`
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 `
 
@@ -313,7 +328,7 @@ const SubTitleText = styled.p`
   line-height: 1.2;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 `
 
@@ -365,18 +380,17 @@ const Navigation = styled.nav`
   justify-content: center;
   align-items: center;
   z-index: 100;
-  padding: 10px 0;
-  height: 120px;
 
   @media (max-width: 768px) {
-    height: 150px;
-    flex-wrap: wrap;
+    height: 56px;
+    padding: 0 1.5rem;
+    justify-content: space-between;
   }
 `
 
 const NavItem = styled.a<{ $active: boolean }>`
   color: white;
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding: 1rem 1rem;
   margin: 10px 20px;
   cursor: pointer;
@@ -388,10 +402,9 @@ const NavItem = styled.a<{ $active: boolean }>`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.7rem;
+    font-size: 1rem;
     margin: 5px 10px;
     padding: 0;
-    flex-basis: 40%; // This will make two items per row
     text-align: center;
   }
 `

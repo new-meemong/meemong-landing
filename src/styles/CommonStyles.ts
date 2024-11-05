@@ -10,6 +10,7 @@ const Container = styled.div`
 const Button = styled.button`
   background-color: #fff;
   border: 1px solid #d9d9d9;
+  color: #000;
   border-radius: 36px;
   padding: 10px;
   cursor: pointer;

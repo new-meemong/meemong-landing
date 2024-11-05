@@ -101,7 +101,7 @@ const Description = styled.p<{ $isDesigner?: boolean }>`
 
   @media (max-width: 768px) {
     padding: 0 1rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 `
 
@@ -112,7 +112,7 @@ const Title = styled.h2<{ $isDesigner?: boolean }>`
   margin-bottom: 40px;
 
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 900;
     line-height: 1.5;
     padding: 0 2rem;
