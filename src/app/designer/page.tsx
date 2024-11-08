@@ -1,25 +1,25 @@
 'use client'
 
+import { DESIGNER_PLAN_DATA, DESIGNER_REVIEW_DATA } from '@/constants/data'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+
 import { Button } from '@/styles/CommonStyles'
-import Image from 'next/image'
-import React, { useState, useEffect, useRef, useMemo } from 'react'
-import styled from 'styled-components'
 import CountDataSection from '@/components/sections/CountDataSection'
-import { useIsMobile } from '@/hooks/useIsMobile'
-import NavigationWebContents from '@/components/navigation/designer/NavigationWebContents'
+import FloatingButtonContainer from '@/components/common/FloatingButtonContainer'
+import FloatingFormButton from '@/components/common/FloatingFormButton'
+import FloatingKaKaoButton from '@/components/common/FloatingKaKaoButton'
+import FooterSection from '@/components/common/FooterSection'
+import { IMAGES } from '@/constants/images'
+import Image from 'next/image'
+import Loading from '@/components/common/Loading'
 import NavigationMobileContents from '@/components/navigation/designer/NavigationMobileContents'
+import NavigationWebContents from '@/components/navigation/designer/NavigationWebContents'
+import PlanSection from '@/components/sections/PlanSection'
 import PopularModelSection from '@/components/sections/PopularModelSection'
 import ReviewSection from '@/components/sections/ReviewSection'
-import PlanSection from '@/components/sections/PlanSection'
-import FooterSection from '@/components/common/FooterSection'
-
-import { IMAGES } from '@/constants/images'
-import Loading from '@/components/common/Loading'
+import styled from 'styled-components'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import { useRouter } from 'next/navigation'
-import { DESIGNER_PLAN_DATA, DESIGNER_REVIEW_DATA } from '@/constants/data'
-import FloatingButtonContainer from '@/components/common/FloatingButtonContainer'
-import FloatingKaKaoButton from '@/components/common/FloatingKaKaoButton'
-import FloatingFormButton from '@/components/common/FloatingFormButton'
 
 export default function Designer() {
   const router = useRouter()
@@ -221,7 +221,7 @@ export default function Designer() {
       {/* 플로팅 버튼 영역 */}
       <FloatingButtonContainer>
         <FloatingKaKaoButton link="https://pf.kakao.com/_NtWKG" />
-        <FloatingFormButton link="https://forms.gle/fQTP7sHMZFUT6c198" />
+        <FloatingFormButton link="https://www.meemong-open.com/" />
       </FloatingButtonContainer>
     </>
   )
