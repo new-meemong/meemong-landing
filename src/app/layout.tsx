@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 import StyledComponentsRegistry from '../lib/registry'
 
 export const metadata: Metadata = {
-  title: '누구나 헤어모델, 미용 일자리까지',
+  title: '미몽 - 누구나 헤어모델, 미용 구인구직까지',
   description:
     '일반인도 손쉽게 헤어모델이 되어 인생머리를 경험하고 미용인과 헤어모델을 위한 구인구직 정보를 한번에 만나보세요. 그리고 창업솔루션까지',
   icons: {
