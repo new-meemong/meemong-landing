@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/icons/favicon-purple.svg',
   },
+  openGraph: {
+    images: '/images/main/thumb.svg',
+  },
 }
 
 export default function DesignerLayout({
