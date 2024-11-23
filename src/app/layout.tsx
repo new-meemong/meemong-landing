@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     icon: '/icons/favicon-purple.svg',
   },
   openGraph: {
-    images: '/images/main/thumb.svg',
+    images: '/images/main/thumb.png',
   },
 }
 
