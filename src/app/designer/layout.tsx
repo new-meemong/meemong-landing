@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     icon: '/icons/favicon-purple.svg',
   },
   openGraph: {
-    images: '/images/main/thumb.png',
+    images: 'https://meemong.com/landing/images/main/thumb.png',
   },
 }
 
